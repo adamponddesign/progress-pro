@@ -1,5 +1,5 @@
 from app import db
-from pony.orm import Required, Optional   #, Set
+from pony.orm import Required, Optional, Set
 from marshmallow import Schema, fields   #, post_load
 
 
@@ -7,6 +7,7 @@ from marshmallow import Schema, fields   #, post_load
 class Day(db.Entity):
     name = Required(str)
     programme = Optional('Programme')
+    exercises = Set('Exercise')
 
 
 
@@ -16,3 +17,4 @@ class DaySchema(Schema):
     id = fields.Int() # dump_only means "write only"
     name = fields.Str(required=True)
     programme = fields.Nested('ProgrammeSchema', exclude=('days',), dump_only=True)
+    exercises = fields.Nested('ExerciseSchema', many=True)

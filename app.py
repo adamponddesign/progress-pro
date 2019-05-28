@@ -1,20 +1,15 @@
-from flask import Flask
+from flask import Flask, jsonify
 from pony.orm import Database
-from pony.orm import db_session
 
 app = Flask(__name__)
 db = Database()
 db.bind('postgres', 'postgres://localhost:5432/progress-pro')
 
 # pylint: disable=W0611,C0413
-from models.Member import Member, MemberSchema
+from config import routes # loads in the models and controllers
 
 db.generate_mapping(create_tables=True)
 
-member_schema = MemberSchema(many=True)
-
-@app.route('/members')
-@db_session
-def index():
-    members = Member.select()
-    return member_schema.dumps(members), 200
+@app.errorhandler(404)
+def not_found(_error):
+    return jsonify({'message': 'Not found'}), 404

@@ -89,6 +89,8 @@ def delete(programme_id):
 
     return '', 204
 
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
 @router.route('/programmes/<int:programme_id>/exercise-items', methods=['POST'])
 @db_session
 @secure_route
@@ -109,7 +111,7 @@ def create_exercise_item(programme_id):
 
     return programme_schema.dumps(programme)
 
-
-@router.route('/programmes/<int:programme_id>/exercise-items/<int:item_id>', methods=['DELETE'])
-@db_session
-@secure_route
+#
+# @router.route('/programmes/<int:programme_id>/exercise-items/<int:item_id>', methods=['DELETE'])
+# @db_session
+# @secure_route

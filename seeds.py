@@ -1,8 +1,8 @@
+# from datetime import date
 from pony.orm import db_session
 from app import db
 from models.User import User
 from models.Programme import Programme
-from models.Day import Day
 from models.Exercise import Exercise
 
 db.drop_all_tables(with_all_data=True)
@@ -10,51 +10,49 @@ db.create_tables()
 
 with db_session():
 
-    #create exercises
-    bench_press = Exercise(name="Bench Press")
-    shoulder_press = Exercise(name="Shoulder Press")
-    squat = Exercise(name="Squat")
+#seed exercises•••••••••••••••••••••••••••••••••••••••••••••••••••••••
+    #arms
     bicep_curl = Exercise(name="Bicep Curl")
     tricep_extension = Exercise(name="Tricep Extension")
+
+    #chest
+    barbell_bench_press = Exercise(name="Barbell Bench Press")
+    dumbbell_fly = Exercise(name="Dumbbell Fly")
+
+    #shoulders
+    dumbbell_shoulder_press = Exercise(name="Dumbbell Shoulder Press")
+
+    #legs
+    squat = Exercise(name="Squat")
     leg_press = Exercise(name="Leg Press")
+    leg_extension = Exercise(name="Leg Extension")
+
+    #back
+    wide_grip_lat_pulldown = Exercise(name="Wide Grip Lat Pulldown")
+    cable_seated_row = Exercise(name="Cable Seated Row")
+
+    #full body
     dead_lift = Exercise(name="Dead Lift")
 
+# seed members ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+    poser_pete = User(name="Poser Pete")
+    insta_stacey = User(name="Insta Stacey")
+    big_stan = User(name="Big Stan")
+    big_tony = User(name="Big Tony")
+    weedy_will = User(name="Weedy Will")
+    ronnie_on_roids = User(name="Ronnie On Roids")
 
-    # create days
-    monday = Day(
-                name="Monday",
-                exercises=[squat, bench_press]
-
-            )
-    tuesday = Day(name="Tuesday")
-    wednesday = Day(name="Wednesday")
-    thursday = Day(name="Thursday")
-    friday = Day(name="Friday")
-    saturday = Day(name="Saturday")
-    sunday = Day(name="Sunday")
-
-
-    # create some members
-    arnie = User(name="Arnie")
-    martin = User(name="Martin")
-    phil = User(name="Phil")
-
-
-    # create some programmes
+# seed programmes •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     Programme(
         name='Summer Programme',
-        user=arnie,
-        days=[monday, wednesday, friday]
+        user=poser_pete
     )
     Programme(
         name='Winter Programme',
-        user=phil,
-        days=[tuesday, thursday, saturday]
+        user=insta_stacey
     )
 
 
 
 
-
-    # save the data to the database
     db.commit()

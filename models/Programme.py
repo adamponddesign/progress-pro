@@ -1,19 +1,14 @@
 from app import db
 from pony.orm import Required, Set
-from marshmallow import Schema, fields   #, post_load
+from marshmallow import Schema, fields
 
-
-# The model describes the database table
 class Programme(db.Entity):
     name = Required(str)
-    user = Required('User') # programe belongs to only one user
-    days = Set('Day')
+    user = Required('User')
+    exercise_items = Set('ExerciseItem')
 
-
-
-# The `schema` descibes the serialization/deserialization
 class ProgrammeSchema(Schema):
-    id = fields.Int() # dump_only means "write only"
+    id = fields.Int()
     name = fields.Str(required=True)
     user = fields.Nested('UserSchema', exclude=('programmes',), dump_only=True)
-    days = fields.Nested('DaySchema', many=True)
+    exercise_items = fields.Nested('ExerciseItemSchema', many=True)

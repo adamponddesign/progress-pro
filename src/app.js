@@ -5,12 +5,13 @@ import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import 'bulma'
 import './style.scss'
 
-// import SecureRoute from './components/common/SecureRoute'
+import SecureRoute from './components/common/SecureRoute'
 import FlashMessages from './components/common/FlashMessages'
 import Navbar from './components/common/Navbar'
 import Home from './components/common/Home'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
+import ProgrammesNew from './components/programmes/New'
 
 class App extends React.Component {
 
@@ -22,13 +23,15 @@ class App extends React.Component {
           <FlashMessages />
           <Switch>
 
+
+            <SecureRoute path="/programmes/new" component={ProgrammesNew} />
+
+            <Route path="/register" component={Register} />
+            <Route path="/login" component={Login} />
+            <Route exact path="/" component={Home} />
+
+
           </Switch>
-
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
-          <Route path="/" component={Home} />
-
-
         </div>
       </Router>
     )

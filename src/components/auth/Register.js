@@ -86,7 +86,7 @@ class Register extends React.Component {
                       onChange={this.handleChange}
                     />
                   </div>
-                  {/*{this.state.errors.passwordConfirmation && <div className="help is-danger">{this.state.errors.passwordConfirmation}</div>}*/}
+                  {/*{{this.state.errors.password_confirmation && <div className="help is-danger">{this.state.errors.password_confirmation}</div>}*/}
                 </div>
                 <button className="button is-primary">Submit</button>
               </form>

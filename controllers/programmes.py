@@ -59,15 +59,15 @@ def show(programme_id):
 @db_session
 @secure_route
 def update(programme_id):
-    schema = ProgrammeSchema()
-    programme = Programme.get(id=programme_id)
+    schema = ProgrammeSchema()      #get/set schema from ProgrammeSchema
+    programme = Programme.get(id=programme_id)  # get/set programme
 
     if not programme:
         abort(404)
 
     try:
-        data = schema.load(request.get_json())
-        programme.set(**data)
+        data = schema.load(request.get_json())      #load the updated info onto data
+        programme.set(**data)       # add all the data to the programme
         db.commit()
     except ValidationError as err:
         return jsonify({'message': 'Validation failed', 'errors': err.messages}), 422
@@ -89,13 +89,11 @@ def delete(programme_id):
 
     return '', 204
 
-# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
-
 @router.route('/programmes/<int:programme_id>/exercise-items', methods=['POST'])
 @db_session
 @secure_route
 def create_exercise_item(programme_id):
-    programme_schema = ProgrammeSchema()
+    schema = ProgrammeSchema()
     exercise_item_schema = ExerciseItemSchema()
     programme = Programme.get(id=programme_id)
 
@@ -109,9 +107,49 @@ def create_exercise_item(programme_id):
     except ValidationError as err:
         return jsonify({'message': 'Validation failed', 'errors': err.messages}), 422
 
-    return programme_schema.dumps(programme)
+    return schema.dumps(programme)
 
-#
-# @router.route('/programmes/<int:programme_id>/exercise-items/<int:item_id>', methods=['DELETE'])
-# @db_session
-# @secure_route
+
+
+@router.route('/programmes/<int:programme_id>/exercise-items/<int:item_id>', methods=['DELETE'])
+@db_session
+@secure_route
+def delete_exercise_item(programme_id, item_id):
+    schema = ProgrammeSchema()
+    programme = Programme.get(id=programme_id)      #get/set programme id
+    exercise_item = ExerciseItem.get(id=item_id)    #get/set specific entry id
+
+    if not exercise_item:
+        abort(404)
+
+    exercise_item.delete()      #delete the specific entry
+    db.commit()
+
+    return schema.dumps(programme)
+    # return the whole programme data to the user, now with the item deleted
+
+
+
+@router.route('/programmes/<int:programme_id>/exercise-items/<int:item_id>', methods=['PUT'])
+@db_session
+@secure_route
+def update_exercise_item(programme_id, item_id):
+    schema = ProgrammeSchema()      # get/set the schema
+    exercise_item_schema = ExerciseItemSchema()
+    programme = Programme.get(id=programme_id)      #get/set programme id
+    exercise_item = ExerciseItem.get(id=item_id)    #get/set specific entry id
+
+    if not exercise_item:
+        abort(404)
+
+    try:
+        data = exercise_item_schema.load(request.get_json())  #load the updated info onto data
+        exercise_item.set(**data)       # add all the data to the programme
+
+
+        db.commit()
+    except ValidationError as err:
+        return jsonify({'message': 'Validation failed', 'errors': err.messages}), 422
+
+    return schema.dumps(programme)
+    # return the whole programme data to the user, now with the item updated

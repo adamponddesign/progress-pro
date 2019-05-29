@@ -1,6 +1,7 @@
 from app import db
 from pony.orm import Required, Optional, Json
-from marshmallow import Schema, fields
+from marshmallow import Schema, fields, post_load
+from .Exercise import Exercise
 
 class ExerciseItem(db.Entity):
     programme = Required('Programme')
@@ -14,6 +15,13 @@ class ExerciseItemSchema(Schema):
     weights = fields.Nested('WeightSchema', many=True)
     exercise = fields.Nested('ExerciseSchema', dump_only=True)
     exercise_id = fields.Int(load_only=True)
+
+    @post_load
+    def load_exercise(self, data):
+        data['exercise'] = Exercise.get(id=data['exercise_id'])
+
+        del data['exercise_id']
+        return data
 
 
 class WeightSchema(Schema):

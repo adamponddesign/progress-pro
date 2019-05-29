@@ -4,7 +4,8 @@ from marshmallow import ValidationError
 from app import db
 from models.Programme import Programme, ProgrammeSchema
 from models.Exercise import Exercise
-from models.ExerciseItem import ExerciseItem
+from models.ExerciseItem import ExerciseItem, ExerciseItemSchema
+from lib.secure_route import secure_route
 
 router = Blueprint(__name__, 'programmes') # creates a router for this controller
 
@@ -18,6 +19,7 @@ def index():
 
 @router.route('/programmes', methods=['POST'])
 @db_session
+@secure_route
 def create():
     # This will deserialize the JSON from insomnia
     schema = ProgrammeSchema()
@@ -29,14 +31,6 @@ def create():
         programme = Programme(name=data['name'], user=g.current_user)
         db.commit()
 
-        for item in data['exercise_items']:
-            ExerciseItem(
-                day=item['day'],
-                exercise=Exercise.get(id=item['exercise_id']),
-                programme=programme
-            )
-        # store it in the database
-        db.commit()
     except ValidationError as err:
         # if the validation fails, send back a 422 response
         return jsonify({'message': 'Validation failed', 'errors': err.messages}), 422
@@ -63,6 +57,7 @@ def show(programme_id):
 
 @router.route('/programmes/<int:programme_id>', methods=['PUT'])
 @db_session
+@secure_route
 def update(programme_id):
     schema = ProgrammeSchema()
     programme = Programme.get(id=programme_id)
@@ -82,6 +77,7 @@ def update(programme_id):
 
 @router.route('/programmes/<int:programme_id>', methods=['DELETE'])
 @db_session
+@secure_route
 def delete(programme_id):
     programme = Programme.get(id=programme_id)
 
@@ -92,3 +88,28 @@ def delete(programme_id):
     db.commit()
 
     return '', 204
+
+@router.route('/programmes/<int:programme_id>/exercise-items', methods=['POST'])
+@db_session
+@secure_route
+def create_exercise_item(programme_id):
+    programme_schema = ProgrammeSchema()
+    exercise_item_schema = ExerciseItemSchema()
+    programme = Programme.get(id=programme_id)
+
+    if not programme:
+        abort(404)
+
+    try:
+        data = exercise_item_schema.load(request.get_json())
+        ExerciseItem(**data, programme=programme)
+        db.commit()
+    except ValidationError as err:
+        return jsonify({'message': 'Validation failed', 'errors': err.messages}), 422
+
+    return programme_schema.dumps(programme)
+
+
+@router.route('/programmes/<int:programme_id>/exercise-items/<int:item_id>', methods=['DELETE'])
+@db_session
+@secure_route

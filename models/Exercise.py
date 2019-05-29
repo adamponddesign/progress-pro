@@ -9,4 +9,3 @@ class Exercise(db.Entity):
 class ExerciseSchema(Schema):
     id = fields.Str(dump_only=True)
     name = fields.Str(required=True)
-    exercise_items = fields.Nested('ExerciseItemSchema', many=True, dump_only=True)

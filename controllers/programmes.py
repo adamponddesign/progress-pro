@@ -1,8 +1,10 @@
-from flask import Blueprint, request, jsonify, abort
+from flask import Blueprint, request, jsonify, abort, g
 from pony.orm import db_session
 from marshmallow import ValidationError
 from app import db
 from models.Programme import Programme, ProgrammeSchema
+from models.Exercise import Exercise
+from models.ExerciseItem import ExerciseItem
 
 router = Blueprint(__name__, 'programmes') # creates a router for this controller
 
@@ -24,7 +26,15 @@ def create():
         # attempt to convert the JSON into a dict
         data = schema.load(request.get_json())
         # Use that to create a programme object
-        programme = Programme(**data)
+        programme = Programme(name=data['name'], user=g.current_user)
+        db.commit()
+
+        for item in data['exercise_items']:
+            ExerciseItem(
+                day=item['day'],
+                exercise=Exercise.get(id=item['exercise_id']),
+                programme=programme
+            )
         # store it in the database
         db.commit()
     except ValidationError as err:

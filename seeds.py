@@ -4,6 +4,7 @@ from app import db
 from models.User import User
 from models.Programme import Programme
 from models.Exercise import Exercise
+from models.ExerciseItem import ExerciseItem
 
 db.drop_all_tables(with_all_data=True)
 db.create_tables()
@@ -43,13 +44,27 @@ with db_session():
     ronnie_on_roids = User(name="Ronnie On Roids")
 
 # seed programmes •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
-    Programme(
+    summer = Programme(
         name='Summer Programme',
         user=poser_pete
     )
-    Programme(
+    winter = Programme(
         name='Winter Programme',
         user=insta_stacey
+    )
+
+    ExerciseItem(
+        exercise=squat,
+        day='Monday',
+        weights=[{'value':100, 'date':'2018-12-12'},{'value':110, 'date': '2019-01-15'}],
+        programme=summer
+    )
+
+    ExerciseItem(
+        exercise=squat,
+        day='Monday',
+        weights=[{'value':80, 'date':'2018-12-12'},{'value':85, 'date': '2019-01-15'}],
+        programme=winter
     )
 
 

@@ -179,9 +179,9 @@ class Show extends React.Component {
               </table>
 
 
-
-
-
+              <div className="buttons is-right">
+                <button className="button is-primary">Save Programme</button>
+              </div>
             </div>
           </div>
         </div>

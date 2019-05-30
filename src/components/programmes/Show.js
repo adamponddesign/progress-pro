@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import Promise from 'bluebird'
+import { Link } from 'react-router-dom'
 
 // const userid = Auth.getPayload().sub
 
@@ -179,9 +180,9 @@ class Show extends React.Component {
               </table>
 
 
-              <div className="buttons is-right">
+              <Link className="buttons is-right" to="/userhome">
                 <button className="button is-primary">Save Programme</button>
-              </div>
+              </Link>
             </div>
           </div>
         </div>

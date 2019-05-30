@@ -19,8 +19,10 @@ class Show extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
 
   }
+
 
   componentDidMount() {
     Promise.props({
@@ -35,7 +37,16 @@ class Show extends React.Component {
   }
 
 
-
+  handleDelete(e) {
+    console.log(e.target.id)
+    const token = Auth.getToken()
+    axios.delete(`/api/programmes/${this.props.match.params.id}/exercise-items/${e.target.id}`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+      .then(res => {
+        this.setState({ programme: res.data })
+      })
+  }
 
 
 
@@ -54,19 +65,23 @@ class Show extends React.Component {
     axios.post(`/api/programmes/${this.props.match.params.id}/exercise-items`, this.state.data, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
-    // .then(() => this.props.history.push('/userhome'))
+      .then(res => {
+        this.setState({ programme: res.data })
+      })
     // .catch(err => this.setState({ errors: err.response.data.errors }))
+
   }
 
 
   render() {
+    console.log(this.state)
     if(!this.state.programme) return null
     return (
       <section className="section">
         <div className="container">
           <div className="columns is-centered">
             <div className="column is-half-desktop is-two-thirds-tablet">
-              <div className="title is-4">{this.state.data.name}</div>
+              <div className="title is-4">{this.state.programme.name}</div>
 
 
 
@@ -82,13 +97,13 @@ class Show extends React.Component {
                           <option>Select dropdown</option>
 
 
-                          <option value="monday" name="monday">Monday</option>
-                          <option value="tuesday" name="tuesday">Tuesday</option>
-                          <option value="wednesday" name="wednesday">Wednesday</option>
-                          <option value="thursday" name="thursday">Thursday</option>
-                          <option value="friday" name="friday">Friday</option>
-                          <option value="saturday" name="saturday">Saturday</option>
-                          <option value="sunday" name="sunday">Sunday</option>
+                          <option value="Monday" name="monday">Monday</option>
+                          <option value="Tuesday" name="tuesday">Tuesday</option>
+                          <option value="Wednesday" name="wednesday">Wednesday</option>
+                          <option value="Thursday" name="thursday">Thursday</option>
+                          <option value="Friday" name="friday">Friday</option>
+                          <option value="Saturday" name="saturday">Saturday</option>
+                          <option value="Sunday" name="sunday">Sunday</option>
 
                         </select>
                       </div>
@@ -126,9 +141,44 @@ class Show extends React.Component {
               </form>
 
 
-              {this.state.programme.exercise_items.map(exercise =>
-                <div key={exercise.id}>{exercise.day}</div>
-              )}
+
+              <table className="table is-fullwidth is-bordered">
+                <thead>
+                  <tr>
+
+                    <th className="has-text-centered">Day</th>
+                    <th className="has-text-centered">Exercises</th>
+                    <th className="has-text-centered"></th>
+
+                  </tr>
+
+                </thead>
+                <tbody>
+                  {this.state.programme.exercise_items.map(exercise =>
+                    <tr key={exercise.id} >
+
+
+                      <td> {exercise.day} </td>
+                      <td> {exercise.exercise.name} </td>
+                      <td>
+                        <div
+                          className="has-text-centered"
+                          onClick={this.handleDelete}
+                          value={exercise.id}
+                          id={exercise.id}
+                        >Delete
+                        </div>
+                      </td>
+
+
+                    </tr>
+
+                  )}
+
+                </tbody>
+              </table>
+
+
 
 
 

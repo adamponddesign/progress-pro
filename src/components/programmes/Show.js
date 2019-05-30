@@ -5,30 +5,30 @@ import Promise from 'bluebird'
 
 // const userid = Auth.getPayload().sub
 
-
 class Show extends React.Component {
 
   constructor() {
     super()
 
     this.state = {
+      programme: null,
       data: {},
       errors: {},
       exercises: []
     }
+
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleSelect = this.handleSelect.bind(this)
 
   }
 
   componentDidMount() {
     Promise.props({
       exercises: axios.get('/api/exercises') .then(res => res.data),
-      data: axios.get(`/api/programmes/${this.props.match.params.id}`).then(res => res.data)
+      programme: axios.get(`/api/programmes/${this.props.match.params.id}`).then(res => res.data)
     })
       .then(res => {
-        this.setState({ exercises: res.exercises, data: res.data })
+        this.setState({ exercises: res.exercises, programme: res.programme })
       })
 
     // .catch(err => this.setState({ errors: err.response.data.errors }))
@@ -42,33 +42,25 @@ class Show extends React.Component {
   handleChange(e) {
     const data = { ...this.state.data, [e.target.name]: (e.target.value) }
     this.setState({ data })
-    console.log(this.state)
-  }
-
-
-
-  handleSelect(e){
-    const data = { ...this.state.data, [e.target.name]: parseInt(e.target.value) }
-    this.setState({ data })
-    console.log(this.state)
   }
 
 
   handleSubmit(e) {
     e.preventDefault()
+    console.log('clicked')
 
-    // const token = Auth.getToken()
-    //
-    // axios.post(`/api/programmes/${userid}/exercise-items`, this.state.data, {
-    //   headers: { 'Authorization': `Bearer ${token}` }
-    // })
-    //   .then(() => this.props.history.push('/userhome'))
-    //   .catch(err => this.setState({ errors: err.response.data.errors }))
+    const token = Auth.getToken()
+
+    axios.post(`/api/programmes/${this.props.match.params.id}/exercise-items`, this.state.data, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+    // .then(() => this.props.history.push('/userhome'))
+    // .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
 
   render() {
-  
+    if(!this.state.programme) return null
     return (
       <section className="section">
         <div className="container">
@@ -80,51 +72,63 @@ class Show extends React.Component {
 
               <form onSubmit={this.handleSubmit}>
 
-                <div className="field">
+                <div className="field is-horizontal">
                   <label className="label">Day</label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      name="day"
-                      placeholder="eg: Monday"
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                  {/*  {this.state.errors.day && <div className="help is-danger">{this.state.errors.day}</div>} */}
-                </div>
+                  <div className="control is-expanded">
+                    <div className="field-body">
+                      <div className="select">
+
+                        <select name="day" onChange={this.handleChange}>
+                          <option>Select dropdown</option>
 
 
-                <div className="field">
-                  <label className="label">Exercise</label>
-                  <div className="control">
-                    <div className="select">
+                          <option value="monday" name="monday">Monday</option>
+                          <option value="tuesday" name="tuesday">Tuesday</option>
+                          <option value="wednesday" name="wednesday">Wednesday</option>
+                          <option value="thursday" name="thursday">Thursday</option>
+                          <option value="friday" name="friday">Friday</option>
+                          <option value="saturday" name="saturday">Saturday</option>
+                          <option value="sunday" name="sunday">Sunday</option>
 
-                      <select name="exercise_id"onChange={this.handleSelect}>
-                        <option>Select dropdown</option>
-                        {this.state.exercises.map(exercise =>
-
-                          <option
-                            key={exercise.id}
-                            value={exercise.id}
-                            name={exercise.id}
-
-                          >{exercise.name}</option>
-                        )}
-                      </select>
+                        </select>
+                      </div>
                     </div>
+                    {/*  {this.state.errors.day && <div className="help is-danger">{this.state.errors.day}</div>} */}
                   </div>
 
-                </div>
+
+                  <div className="field is-horizontal">
+                    <label className="label">Exercise</label>
+                    <div className="control is-expanded">
+                      <div className="select">
+
+                        <select name="exercise_id" onChange={this.handleChange}>
+                          <option>Select dropdown</option>
+                          {this.state.exercises.map(exercise =>
+
+                            <option
+                              key={exercise.id}
+                              value={exercise.id}
+
+                            >{exercise.name}</option>
+                          )}
+                        </select>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div> {/*field body closing tag*/}
 
 
 
-
-
-                <button className="button is-primary">Submit</button>
+                <button className="button is-primary">Add Exercise</button>
               </form>
 
 
-
+              {this.state.programme.exercise_items.map(exercise =>
+                <div key={exercise.id}>{exercise.day}</div>
+              )}
 
 
 
@@ -137,29 +141,3 @@ class Show extends React.Component {
 }
 
 export default Show
-
-
-
-
-
-
-
-
-
-
-
-
-// <div className="buttons" onClick={this.handleclick}>
-// {this.state.exercises.map(exercise =>
-//   <span
-//   key={exercise.id}
-//   className="button"
-//   value={exercise.name}
-//   name={exercise.name}
-//
-//   >{exercise.name}
-//
-//   </span>
-// )}
-//
-// </div>

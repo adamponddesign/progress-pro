@@ -1,8 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+import Promise from 'bluebird'
 
-const userid = Auth.getPayload().sub
+// const userid = Auth.getPayload().sub
 
 
 class Show extends React.Component {
@@ -22,8 +23,15 @@ class Show extends React.Component {
   }
 
   componentDidMount() {
-    axios('/api/exercises')
-      .then(res => this.setState({ exercises: res.data }))
+    Promise.props({
+      exercises: axios.get('/api/exercises') .then(res => res.data),
+      data: axios.get(`/api/programmes/${this.props.match.params.id}`).then(res => res.data)
+    })
+      .then(res => {
+        this.setState({ exercises: res.exercises, data: res.data })
+      })
+
+    // .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
 
@@ -49,23 +57,24 @@ class Show extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
 
-    const token = Auth.getToken()
-
-    axios.post(`/api/programmes/${userid}/exercise-items`, this.state.data, {
-      headers: { 'Authorization': `Bearer ${token}` }
-    })
-      .then(() => this.props.history.push('/userhome'))
-      .catch(err => this.setState({ errors: err.response.data.errors }))
+    // const token = Auth.getToken()
+    //
+    // axios.post(`/api/programmes/${userid}/exercise-items`, this.state.data, {
+    //   headers: { 'Authorization': `Bearer ${token}` }
+    // })
+    //   .then(() => this.props.history.push('/userhome'))
+    //   .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
 
   render() {
+  
     return (
       <section className="section">
         <div className="container">
           <div className="columns is-centered">
             <div className="column is-half-desktop is-two-thirds-tablet">
-              <div className="title is-4">New Programme</div>
+              <div className="title is-4">{this.state.data.name}</div>
 
 
 

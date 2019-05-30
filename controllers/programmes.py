@@ -89,6 +89,34 @@ def delete(programme_id):
 
     return '', 204
 
+
+
+
+# use ? in url to filter items in the db  ••••••••••••••••••••••••••••••••••••••••••
+
+@router.route('/programmes/<int:programme_id>/exercise-items', methods=['GET'])
+@db_session
+@secure_route
+def show_exercise_items(programme_id):
+
+
+    schema = ExerciseItemSchema(many=True)
+    day = request.args.get('day')       #set day variable to hold the day from the request query string
+    programme = Programme.get(id=programme_id)  #set programme variale to hold programme_id
+    exercise_items = ExerciseItem.select(lambda item: item.day == day and item.programme == programme)
+    # set exercise_items to be all the exercise items for the current day, from the current programme
+
+    return schema.dumps(exercise_items)
+
+
+
+
+
+
+
+
+
+
 @router.route('/programmes/<int:programme_id>/exercise-items', methods=['POST'])
 @db_session
 @secure_route

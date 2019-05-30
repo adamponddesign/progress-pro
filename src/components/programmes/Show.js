@@ -5,7 +5,7 @@ import Auth from '../../lib/Auth'
 const userid = Auth.getPayload().sub
 
 
-class New extends React.Component {
+class Show extends React.Component {
 
   constructor() {
     super()
@@ -127,7 +127,7 @@ class New extends React.Component {
   }
 }
 
-export default New
+export default Show
 
 
 

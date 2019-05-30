@@ -11,7 +11,7 @@ import Navbar from './components/common/Navbar'
 import Home from './components/common/Home'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
-import ProgrammesNew from './components/programmes/New'
+import ProgrammesShow from './components/programmes/Show'
 import UserHome from './components/common/UserHome'
 
 class App extends React.Component {
@@ -25,7 +25,7 @@ class App extends React.Component {
           <Switch>
 
 
-            <SecureRoute path="/programmes/new" component={ProgrammesNew} />
+            <SecureRoute path="/programmes/:id" component={ProgrammesShow} />
             <SecureRoute path="/userhome" component={UserHome} />
 
             <Route path="/register" component={Register} />

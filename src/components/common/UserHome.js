@@ -9,16 +9,31 @@ class UserHome extends React.Component {
 
     this.state = {
       data: {},
-      errors: {}
+      errors: {},
+      programmeName: ''
+      // programmes: []
     }
+
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
 
+  // componentDidMount() {
+  //   axios(`/api/programmes/${this.props.match.params.id}`)
+  //     .then(res => this.setState({ programmes: res.data }))
+  //   console.log(this.data)
+  // }
+
+
+
+
+
   handleChange(e) {
     const data = { ...this.state.data, [e.target.name]: e.target.value }
     this.setState({ data })
+
+
     console.log(this.state.data)
   }
 
@@ -33,7 +48,7 @@ class UserHome extends React.Component {
     axios.post('/api/programmes', this.state.data, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
-      .then(() => this.props.history.push('/programmes/new'),
+      .then(res => this.props.history.push(`/programmes/${res.data.id}`),
         console.log('programme created'))
   }
 

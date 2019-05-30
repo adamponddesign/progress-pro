@@ -12,6 +12,7 @@ import Home from './components/common/Home'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import ProgrammesNew from './components/programmes/New'
+import UserHome from './components/common/UserHome'
 
 class App extends React.Component {
 
@@ -25,6 +26,7 @@ class App extends React.Component {
 
 
             <SecureRoute path="/programmes/new" component={ProgrammesNew} />
+            <SecureRoute path="/userhome" component={UserHome} />
 
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />

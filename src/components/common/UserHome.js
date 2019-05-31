@@ -103,7 +103,6 @@ class UserHome extends React.Component {
 
                 <div key={programme.id}>
 
-                  <Link to={`/programmes/${programme.id}`} className="button is-primary">Edit Programme</Link>
 
 
                   <div>{programme.name}</div>
@@ -111,6 +110,11 @@ class UserHome extends React.Component {
                     <div key={day} className="button is-primary">{day} Train</div>
                   )}
 
+
+
+                  <div>
+                    <Link to={`/programmes/${programme.id}`} className="button">Edit Programme</Link>
+                  </div>
 
                   <hr />
 

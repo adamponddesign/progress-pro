@@ -26,7 +26,7 @@ class App extends React.Component {
 
 
             <SecureRoute path="/programmes/:id" component={ProgrammesShow} />
-            <SecureRoute path="/userhome" component={UserHome} />
+            <SecureRoute path="/profile" component={UserHome} />
 
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />

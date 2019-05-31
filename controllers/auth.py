@@ -1,8 +1,9 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, g
 from models.User import User, UserSchema
 from app import db
 from pony.orm import db_session
 from marshmallow import ValidationError
+from lib.secure_route import secure_route
 
 router = Blueprint('auth', __name__)
 
@@ -40,3 +41,11 @@ def login():
         'message': f'Welcome back {user.name}',
         'token': user.generate_token()
     })
+
+
+@router.route('/profile', methods=['GET'])
+@db_session
+@secure_route
+def profile():
+    schema = UserSchema()
+    return schema.dumps(g.current_user)

@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+import { Link } from 'react-router-dom'
 
 class UserHome extends React.Component {
 
@@ -10,7 +11,8 @@ class UserHome extends React.Component {
     this.state = {
       data: {},
       errors: {},
-      programmeName: ''
+      programmeName: '',
+      user: {}
       // programmes: []
     }
 
@@ -19,13 +21,24 @@ class UserHome extends React.Component {
   }
 
 
-  // componentDidMount() {
-  //   axios(`/api/programmes/${this.props.match.params.id}`)
-  //     .then(res => this.setState({ programmes: res.data }))
-  //   console.log(this.data)
-  // }
+  componentDidMount() {
+    const token = Auth.getToken()
+    axios.get('/api/profile', {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
 
+      .then(res => {
+        res.data.programmes = res.data.programmes.map(programme => {
+          let days = programme.exercise_items.map(exercise => exercise.day)
+          days = Array.from(new Set(days))
+          programme.days = days
+          // console.log(days)
+          return programme
+        })
 
+        this.setState({ user: res.data })
+      })
+  }
 
 
 
@@ -34,7 +47,7 @@ class UserHome extends React.Component {
     this.setState({ data })
 
 
-    console.log(this.state.data)
+    // console.log(this.state.data)
   }
 
 
@@ -48,13 +61,14 @@ class UserHome extends React.Component {
     axios.post('/api/programmes', this.state.data, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
-      .then(res => this.props.history.push(`/programmes/${res.data.id}`),
-        console.log('programme created'))
+      .then(res => this.props.history.push(`/programmes/${res.data.id}`))
   }
 
 
 
   render() {
+    console.log(this.state)
+    if(!this.state.user.programmes) return null
     return (
       <section className="section">
         <div className="container">
@@ -84,6 +98,30 @@ class UserHome extends React.Component {
               </form>
 
               <hr />
+              <div className="subtitle">Current Programmes</div>
+              {this.state.user.programmes.map((programme) =>
+
+                <div key={programme.id}>
+
+                  <Link to={`/programmes/${programme.id}`} className="button is-primary">Edit Programme</Link>
+
+
+                  <div>{programme.name}</div>
+                  {programme.days.map(day =>
+                    <div key={day} className="button is-primary">{day} Train</div>
+                  )}
+
+
+                  <hr />
+
+                </div> // programme id closing wrapper
+
+              )}
+
+
+
+
+
               <div className="subtitle">Results</div>
 
 

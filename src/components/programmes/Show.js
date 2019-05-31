@@ -180,7 +180,7 @@ class Show extends React.Component {
               </table>
 
 
-              <Link className="buttons is-right" to="/userhome">
+              <Link className="buttons is-right" to="/profile">
                 <button className="button is-primary">Save Programme</button>
               </Link>
             </div>

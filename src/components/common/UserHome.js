@@ -98,12 +98,11 @@ class UserHome extends React.Component {
               <form onSubmit={this.handleSubmit}>
 
                 <div className="field">
-                  <label className="label">Create A New Programme</label>
                   <div className="control">
                     <input
                       className="input"
                       name="name"
-                      placeholder="eg: Shred programme"
+                      placeholder="eg: Enter New Programme Name Here"
                       onChange={this.handleChange}
                     />
                   </div>
@@ -111,7 +110,7 @@ class UserHome extends React.Component {
                 </div>
 
 
-                <button className="button is-primary">Go</button>
+                <button className="button is-primary">Create a New Programme</button>
               </form>
 
               <hr />

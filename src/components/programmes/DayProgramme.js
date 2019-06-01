@@ -43,10 +43,28 @@ class DayProgramme extends React.Component {
 
               {this.state.data.map(item =>
                 <div key={item.id}>
-
-
-
                   <div>{item.exercise.name}</div>
+                  <div>{
+                    item.weights[item.weights.length-1.].value} kg</div>
+
+                  <form onSubmit={this.handleSubmit}>
+
+                    <div className="field">
+                      <div className="control">
+                        <input
+                          className="input"
+                          name="name"
+                          placeholder={item.weights[item.weights.length-1.].value}
+                          onChange={this.handleChange}
+                        />
+                      </div>
+                    </div>
+
+
+                    <button className="button is-primary">Create a New Programme</button>
+                  </form>
+
+
 
                 </div>
               )}

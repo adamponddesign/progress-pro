@@ -3,7 +3,7 @@ import axios from 'axios'
 import Auth from '../../lib/Auth'
 import moment from 'moment'
 
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 
@@ -57,7 +57,9 @@ class ProgrammeResults extends React.Component {
                   <hr />
                 </div>
               )}
-
+              <Link className="buttons is-right" to="/profile">
+                <button className="button is-primary">Back to Home</button>
+              </Link>
             </div>
           </div>
         </div>

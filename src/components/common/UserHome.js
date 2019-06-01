@@ -110,7 +110,7 @@ class UserHome extends React.Component {
                 </div>
 
 
-                <button className="button is-primary">Create a New Programme</button>
+                <button className="button is-success">Create a New Programme</button>
               </form>
 
               <hr />
@@ -125,13 +125,13 @@ class UserHome extends React.Component {
 
                   {programme.days.map(day =>
                     <Link to={`/programmes/${programme.id}/exercise-items?day=${day}`} key={day}>
-                      <div className="button is-primary">{day} Train</div>
+                      <div className="button">{day} Train</div>
                     </Link>
                   )}
 
 
 
-                  <Link to={`/programmes/${programme.id}`} className="button">Edit Programme</Link>
+                  <Link to={`/programmes/${programme.id}`} className="button is-warning">Edit Programme</Link>
 
 
                   <div id={programme.id} onClick={this.handleDelete} className="button is-danger">Delete Programme</div>

@@ -41,7 +41,7 @@ class DayProgramme extends React.Component {
   }
 
   decreaseValue() {
-    var value = parseInt(document.getElementById('number').value, 10)
+    let value = parseInt(document.getElementById('number').value, 10)
     value = isNaN(value) ? 0 : value
     value < 1 ? value = 1 : ''
     value--
@@ -81,9 +81,9 @@ class DayProgramme extends React.Component {
 
 
 
-                  <div className="value-button" id="decrease" onClick={this.decreaseValue} value="Decrease Value">-</div>
+                  <div className="value-button is-danger" id="decrease" onClick={this.decreaseValue} value="Decrease Value">-</div>
                   <input className="is-size-4" type="number" id="number" value={item.weights[item.weights.length-1.].value} />
-                  <div className="value-button" id="increase" onClick={this.increaseValue} value="Increase Value">+</div>
+                  <div className="value-button is-success" id="increase" onClick={this.increaseValue} value="Increase Value">+</div>
                 </form>
 
 

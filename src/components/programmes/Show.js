@@ -138,7 +138,7 @@ class Show extends React.Component {
 
 
 
-                <button className="button is-primary">Add Exercise</button>
+                <button className="button is-warning">Add Exercise</button>
               </form>
 
 
@@ -181,7 +181,7 @@ class Show extends React.Component {
 
 
               <Link className="buttons is-right" to="/profile">
-                <button className="button is-primary">Save Programme</button>
+                <button className="button is-success">Save Programme</button>
               </Link>
             </div>
           </div>

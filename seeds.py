@@ -66,6 +66,8 @@ with db_session():
         user=adam_p
     )
 
+# •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
     ExerciseItem(
         exercise=dumbbell_fly,
         day='Monday',
@@ -88,18 +90,39 @@ with db_session():
     )
 
     ExerciseItem(
+        exercise=dumbbell_shoulder_press,
+        day='Wednesday',
+        weights=[{'value':16, 'date':'2018-12-12'}, {'value':18, 'date': '2019-01-15'}],
+        programme=summer
+    )
+
+    ExerciseItem(
         exercise=cable_seated_row,
         day='Friday',
         weights=[{'value':80, 'date':'2018-12-12'}, {'value':85, 'date': '2019-01-15'}],
         programme=summer
     )
 
+    ExerciseItem(
+        exercise=leg_press,
+        day='Friday',
+        weights=[{'value':150, 'date':'2018-12-12'}, {'value':170, 'date': '2019-01-15'}],
+        programme=summer
+    )
 
+# •••••••••••••••••••••••••••••••••••••••••••••••••••••••
 
     ExerciseItem(
         exercise=squat,
         day='Tuesday',
-        weights=[{'value':80, 'date':'2018-12-12'}, {'value':85, 'date': '2019-01-15'}],
+        weights=[{'value':200, 'date':'2018-12-12'}, {'value':210, 'date': '2019-01-15'}],
+        programme=winter
+    )
+
+    ExerciseItem(
+        exercise=dumbbell_fly,
+        day='Tuesday',
+        weights=[{'value':90, 'date':'2018-12-12'}, {'value':95, 'date': '2019-01-15'}],
         programme=winter
     )
 
@@ -111,13 +134,27 @@ with db_session():
     )
 
     ExerciseItem(
+        exercise=cable_seated_row,
+        day='Thursday',
+        weights=[{'value':80, 'date':'2018-12-12'}, {'value':80, 'date': '2019-01-15'}],
+        programme=winter
+    )
+
+    ExerciseItem(
         exercise=wide_grip_lat_pulldown,
         day='Sunday',
         weights=[{'value':40, 'date':'2018-12-12'}, {'value':40, 'date': '2019-01-15'}],
         programme=winter
     )
 
+    ExerciseItem(
+        exercise=leg_extension,
+        day='Sunday',
+        weights=[{'value':30, 'date':'2018-12-12'}, {'value':35, 'date': '2019-01-15'}],
+        programme=winter
+    )
 
 
+# •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 
     db.commit()

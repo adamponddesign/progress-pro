@@ -45,13 +45,13 @@ class ProgrammeResults extends React.Component {
 
                 <div key={item.id}>
                   <div>{item.exercise.name}</div>
+
+
+
                   {item.weights.map(entry =>
                     <div key={entry.date}>
                       <span>{moment(entry.date).format('D MMM YYYY')}</span>
                       <span>     {entry.value} kg</span>
-
-
-
                     </div>
                   )}
                   <hr />

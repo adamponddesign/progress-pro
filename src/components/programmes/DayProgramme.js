@@ -13,6 +13,10 @@ class DayProgramme extends React.Component {
     this.state = {
       data: null
     }
+
+    this.increaseValue = this.increaseValue.bind(this)
+    this.decreaseValue = this.decreaseValue.bind(this)
+
   }
 
   componentDidMount() {
@@ -29,6 +33,33 @@ class DayProgramme extends React.Component {
 
 
 
+  increaseValue() {
+    let value = parseInt(document.getElementById('number').value, 10)
+    value = isNaN(value) ? 0 : value
+    value++
+    document.getElementById('number').value = value
+  }
+
+  decreaseValue() {
+    var value = parseInt(document.getElementById('number').value, 10)
+    value = isNaN(value) ? 0 : value
+    value < 1 ? value = 1 : ''
+    value--
+    document.getElementById('number').value = value
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
   render() {
     console.log(this.state.data)
     if(!this.state.data) return null
@@ -42,31 +73,24 @@ class DayProgramme extends React.Component {
 
 
               {this.state.data.map(item =>
-                <div key={item.id}>
+                <form key={item.id} id="weight-up-down">
+
                   <div>{item.exercise.name}</div>
-                  <div>{
-                    item.weights[item.weights.length-1.].value} kg</div>
-
-                  <form onSubmit={this.handleSubmit}>
-
-                    <div className="field">
-                      <div className="control">
-                        <input
-                          className="input"
-                          name="name"
-                          placeholder={item.weights[item.weights.length-1.].value}
-                          onChange={this.handleChange}
-                        />
-                      </div>
-                    </div>
-
-
-                    <button className="button is-primary">Create a New Programme</button>
-                  </form>
+                  <div> Last session you lifted <span className="is-size-4">{item.weights[item.weights.length-1.].value}</span> kg</div>
 
 
 
-                </div>
+
+                  <div className="value-button" id="decrease" onClick={this.decreaseValue} value="Decrease Value">-</div>
+                  <input className="is-size-4" type="number" id="number" value={item.weights[item.weights.length-1.].value} />
+                  <div className="value-button" id="increase" onClick={this.increaseValue} value="Increase Value">+</div>
+                </form>
+
+
+
+
+
+
               )}
 
             </div>

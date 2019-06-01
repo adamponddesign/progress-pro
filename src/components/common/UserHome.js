@@ -18,6 +18,8 @@ class UserHome extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+
   }
 
 
@@ -42,13 +44,28 @@ class UserHome extends React.Component {
 
 
 
+
   handleChange(e) {
     const data = { ...this.state.data, [e.target.name]: e.target.value }
     this.setState({ data })
-
-
-    // console.log(this.state.data)
   }
+
+
+
+
+
+
+
+  handleDelete(e) {
+    const token = Auth.getToken()
+    axios.delete(`/api/programmes/${e.target.id}`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+      .then(res => this.props.history.push(`/programmes/${res.data.id}`))
+  }
+
+
+
 
 
 
@@ -67,7 +84,7 @@ class UserHome extends React.Component {
 
 
   render() {
-    console.log(this.state)
+    console.log(this.state.user)
     if(!this.state.user.programmes) return null
     return (
       <section className="section">
@@ -98,7 +115,7 @@ class UserHome extends React.Component {
               </form>
 
               <hr />
-              <div className="subtitle">Current Programmes</div>
+              <div className="subtitle">Saved Programmes</div>
               {this.state.user.programmes.map((programme) =>
 
                 <div key={programme.id}>
@@ -106,15 +123,19 @@ class UserHome extends React.Component {
 
 
                   <div>{programme.name}</div>
+
                   {programme.days.map(day =>
-                    <div key={day} className="button is-primary">{day} Train</div>
+                    <Link to={`/programmes/${programme.id}/exercise-items?day=${day}`} key={day}>
+                      <div className="button is-primary">{day} Train</div>
+                    </Link>
                   )}
 
 
 
-                  <div>
-                    <Link to={`/programmes/${programme.id}`} className="button">Edit Programme</Link>
-                  </div>
+                  <Link to={`/programmes/${programme.id}`} className="button">Edit Programme</Link>
+
+
+                  <div id={programme.id} onClick={this.handleDelete} className="button is-danger">Delete Programme</div>
 
                   <hr />
 
@@ -128,9 +149,11 @@ class UserHome extends React.Component {
 
               <div className="subtitle">Results</div>
 
+              {this.state.user.programmes.map((programme) =>
 
+                <Link key={programme.id} to={`/programmes/${programme.id}/results`} className="button">{programme.name}</Link>
 
-
+              )}
 
             </div>
           </div>

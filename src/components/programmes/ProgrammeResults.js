@@ -1,11 +1,13 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+import moment from 'moment'
 
 // import { Link } from 'react-router-dom'
 
 
-class DayProgramme extends React.Component {
+
+class ProgrammeResults extends React.Component {
 
   constructor() {
     super()
@@ -17,8 +19,7 @@ class DayProgramme extends React.Component {
 
   componentDidMount() {
     const token = Auth.getToken()
-    // console.log(this.props.location.search)
-    axios.get(`/api/programmes/${this.props.match.params.id}/exercise-items${this.props.location.search}`, {
+    axios.get(`/api/programmes/${this.props.match.params.id}`, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
 
@@ -30,7 +31,7 @@ class DayProgramme extends React.Component {
 
 
   render() {
-    console.log(this.state.data)
+    // console.log(this.state.data)
     if(!this.state.data) return null
     return (
       <section className="section">
@@ -38,16 +39,22 @@ class DayProgramme extends React.Component {
           <div className="columns is-centered">
             <div className="column is-half-desktop is-two-thirds-tablet">
 
-              <div className="title is-4">{this.state.data[0].day}</div>
+              <div className="title is-4">{this.state.data.name} Results</div>
 
+              {this.state.data.exercise_items.map(item =>
 
-              {this.state.data.map(item =>
                 <div key={item.id}>
-
-
-
                   <div>{item.exercise.name}</div>
+                  {item.weights.map(entry =>
+                    <div key={entry.date}>
+                      <span>{moment(entry.date).format('D MMM YYYY')}</span>
+                      <span>     {entry.value} kg</span>
 
+
+
+                    </div>
+                  )}
+                  <hr />
                 </div>
               )}
 
@@ -59,4 +66,4 @@ class DayProgramme extends React.Component {
   }
 }
 
-export default DayProgramme
+export default ProgrammeResults

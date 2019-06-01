@@ -14,6 +14,7 @@ import Register from './components/auth/Register'
 import ProgrammesShow from './components/programmes/Show'
 import UserHome from './components/common/UserHome'
 import DayProgramme from './components/programmes/DayProgramme'
+import ProgrammeResults from './components/programmes/ProgrammeResults'
 
 class App extends React.Component {
 
@@ -26,7 +27,8 @@ class App extends React.Component {
           <Switch>
 
 
-            <SecureRoute path="/programmes/:id/exercise-items" component={DayProgramme} />
+            <SecureRoute path="/programmes/:id/exercise-items/" component={DayProgramme} />
+            <SecureRoute path="/programmes/:id/results/" component={ProgrammeResults} />
             <SecureRoute path="/programmes/:id" component={ProgrammesShow} />
             <SecureRoute path="/profile" component={UserHome} />
 

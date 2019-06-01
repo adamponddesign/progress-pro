@@ -67,6 +67,13 @@ with db_session():
     )
 
     ExerciseItem(
+        exercise=dumbbell_fly,
+        day='Monday',
+        weights=[{'value':40, 'date':'2018-12-12'}, {'value':45, 'date': '2019-01-15'}],
+        programme=summer
+    )
+
+    ExerciseItem(
         exercise=squat,
         day='Monday',
         weights=[{'value':100, 'date':'2018-12-12'}, {'value':110, 'date': '2019-01-15'}],
@@ -74,9 +81,39 @@ with db_session():
     )
 
     ExerciseItem(
-        exercise=squat,
-        day='Monday',
+        exercise=barbell_bench_press,
+        day='Wednesday',
+        weights=[{'value':10, 'date':'2018-12-12'}, {'value':12, 'date': '2019-01-15'}],
+        programme=summer
+    )
+
+    ExerciseItem(
+        exercise=cable_seated_row,
+        day='Friday',
         weights=[{'value':80, 'date':'2018-12-12'}, {'value':85, 'date': '2019-01-15'}],
+        programme=summer
+    )
+
+
+
+    ExerciseItem(
+        exercise=squat,
+        day='Tuesday',
+        weights=[{'value':80, 'date':'2018-12-12'}, {'value':85, 'date': '2019-01-15'}],
+        programme=winter
+    )
+
+    ExerciseItem(
+        exercise=dumbbell_shoulder_press,
+        day='Thursday',
+        weights=[{'value':12, 'date':'2018-12-12'}, {'value':14, 'date': '2019-01-15'}],
+        programme=winter
+    )
+
+    ExerciseItem(
+        exercise=wide_grip_lat_pulldown,
+        day='Sunday',
+        weights=[{'value':40, 'date':'2018-12-12'}, {'value':40, 'date': '2019-01-15'}],
         programme=winter
     )
 

@@ -55,6 +55,22 @@ def show(programme_id):
     return schema.dumps(programme)
 
 
+@router.route('/programmes/<int:programme_id>/results', methods=['GET'])
+@db_session
+def show_programme_results(programme_id):
+    # This will serialize our data
+    schema = ProgrammeSchema()
+    # This gets a programme by ID
+    programme = Programme.get(id=programme_id)
+
+    # If we can't find a programme, send a 404 response
+    if not programme:
+        abort(404)
+
+    # otherwise, send back the programme data as JSON
+    return schema.dumps(programme)
+
+
 @router.route('/programmes/<int:programme_id>', methods=['PUT'])
 @db_session
 @secure_route

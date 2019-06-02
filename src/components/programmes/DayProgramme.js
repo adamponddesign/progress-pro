@@ -16,6 +16,7 @@ class DayProgramme extends React.Component {
     }
 
     this.increaseValue = this.increaseValue.bind(this)
+    this.onChangeHandler = this.onChangeHandler.bind(this)
     // this.decreaseValue = this.decreaseValue.bind(this)
 
   }
@@ -40,48 +41,39 @@ class DayProgramme extends React.Component {
 
 
   increaseValue(e) {
-    console.log(e.target)
-    let value = parseInt(e.target.id)
-    // value={item.weights[item.weights.length-1.].value}
-    // get the value from the form input field
 
-    //create value variable = save to it the value from the number input field..
-    //
-    value = isNaN(value) ? 0 : value // handle if value is NaN
-    //
-    value++   // increase the value by one
-    console.log(value)
+    // get the index of the exercise item
+    const indexOfClickedExcise = e.target.id
+    console.log('index of the exercise item from e.target.id', indexOfClickedExcise)
 
-    const data ={ ...this.state.data}
-    console.log(data)
-    // this.setState({ liveWeightInput: value })
-    // console.log(this.state.liveWeightInput)
+
+
+    // get index of the last weight entry
+    const indexOfLastWeightEntry = (this.state.data[indexOfClickedExcise].weights.length-1)
+    console.log('index of the last weight entry', indexOfLastWeightEntry)
+
+
+    // Save last weight entry value to the variable 'value'
+    let value = (this.state.data[indexOfClickedExcise].weights[indexOfLastWeightEntry].value)
+    console.log('the value of the last weight entry was', value)
+
+    // add one to the last weight entry
+    value ++
+
+    console.log('the value increased by 1 equals', value)
+
+
+
+    // update state to reflect the change to the last weight last weight entry, of the clicked exercise only
+
+    // so on re render the figure in the input field of that exercise will be updated
+
 
   }
-  //
-  // document.getElementById('number').value = value   //post the value back to the number input field
 
-
-
-  //
-  // decreaseValue(e) {
-  //   let value = parseInt(document.getElementById('number').value, 10)
-  //   value = isNaN(value) ? 0 : value
-  //   value < 1 ? value = 1 : ''
-  //   value--
-  //   document.getElementById('number').value = value
-  // }
-  //
-
-
-
-  // handleChange(e) {
-  //   const data = { ...this.state.data, [e.target.name]: e.target.value }
-  //   this.setState({ data })
-  // }
-
-
-
+  onChangeHandler(){
+    console.log('onChangeHandler Activated')
+  }
 
 
 
@@ -89,7 +81,7 @@ class DayProgramme extends React.Component {
 
   render() {
     if(!this.state.data) return null
-    console.log(this.state.data)
+    // console.log(this.state.data)
     return (
       <section className="section">
         <div className="container">
@@ -100,7 +92,7 @@ class DayProgramme extends React.Component {
 
 
               {this.state.data.map((item, i) =>
-                <form key={item.id} id="weight-up-down">
+                <form key={item.id} id="weight-up-down" >
 
                   <div>{item.exercise.name}</div>
                   <div> Last session you lifted
@@ -113,11 +105,10 @@ class DayProgramme extends React.Component {
 
 
                   <div
-                    className="value-button is-danger"
-                    id="decrease"
-                    // onClick={this.decreaseValue}
-                    value="Decrease Value"
-                  >-
+                    className='button is-danger'
+
+
+                  >DECREASE BY 1
                   </div>
 
 
@@ -127,17 +118,19 @@ class DayProgramme extends React.Component {
                     type="number"
                     id={'update value field id ' + i}
                     value={item.weights[item.weights.length-1.].value}
+                    onChange={this.onChangeHandler}
                   />
 
 
 
 
                   <div
-                    className="value-button is-success"
-                    id={item.weights[item.weights.length-1.].value}
+                    className="button is-success"
+                    id={i}
                     onClick={this.increaseValue}
 
-                  >+
+
+                  >INCREASE BY 1
                   </div>
                 </form>
 

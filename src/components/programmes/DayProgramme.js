@@ -12,10 +12,11 @@ class DayProgramme extends React.Component {
 
     this.state = {
       data: null
+      // liveWeightInput: null
     }
 
     this.increaseValue = this.increaseValue.bind(this)
-    this.decreaseValue = this.decreaseValue.bind(this)
+    // this.decreaseValue = this.decreaseValue.bind(this)
 
   }
 
@@ -27,31 +28,57 @@ class DayProgramme extends React.Component {
     })
 
       .then(res => {
-        this.setState({ data: res.data })
+        // console.log(res)
+        this.setState({
+          data: res.data
+
+
+        })
       })
   }
 
 
 
-  increaseValue() {
-    let value = parseInt(document.getElementById('number').value, 10)
-    value = isNaN(value) ? 0 : value
-    value++
-    document.getElementById('number').value = value
+  increaseValue(e) {
+    console.log(e.target)
+    let value = parseInt(e.target.id)
+    // value={item.weights[item.weights.length-1.].value}
+    // get the value from the form input field
+
+    //create value variable = save to it the value from the number input field..
+    //
+    value = isNaN(value) ? 0 : value // handle if value is NaN
+    //
+    value++   // increase the value by one
+    console.log(value)
+
+    const data ={ ...this.state.data}
+    console.log(data)
+    // this.setState({ liveWeightInput: value })
+    // console.log(this.state.liveWeightInput)
+
   }
-
-  decreaseValue() {
-    let value = parseInt(document.getElementById('number').value, 10)
-    value = isNaN(value) ? 0 : value
-    value < 1 ? value = 1 : ''
-    value--
-    document.getElementById('number').value = value
-  }
+  //
+  // document.getElementById('number').value = value   //post the value back to the number input field
 
 
 
+  //
+  // decreaseValue(e) {
+  //   let value = parseInt(document.getElementById('number').value, 10)
+  //   value = isNaN(value) ? 0 : value
+  //   value < 1 ? value = 1 : ''
+  //   value--
+  //   document.getElementById('number').value = value
+  // }
+  //
 
 
+
+  // handleChange(e) {
+  //   const data = { ...this.state.data, [e.target.name]: e.target.value }
+  //   this.setState({ data })
+  // }
 
 
 
@@ -61,8 +88,8 @@ class DayProgramme extends React.Component {
 
 
   render() {
-    console.log(this.state.data)
     if(!this.state.data) return null
+    console.log(this.state.data)
     return (
       <section className="section">
         <div className="container">
@@ -72,18 +99,46 @@ class DayProgramme extends React.Component {
               <div className="title is-4">{this.state.data[0].day}</div>
 
 
-              {this.state.data.map(item =>
+              {this.state.data.map((item, i) =>
                 <form key={item.id} id="weight-up-down">
 
                   <div>{item.exercise.name}</div>
-                  <div> Last session you lifted <span className="is-size-4">{item.weights[item.weights.length-1.].value}</span> kg</div>
+                  <div> Last session you lifted
+                    <span className="is-size-4">
+                      {item.weights[item.weights.length-1.].value}
+                    </span> kg
+                  </div>
 
 
 
 
-                  <div className="value-button is-danger" id="decrease" onClick={this.decreaseValue} value="Decrease Value">-</div>
-                  <input className="is-size-4" type="number" id="number" value={item.weights[item.weights.length-1.].value} />
-                  <div className="value-button is-success" id="increase" onClick={this.increaseValue} value="Increase Value">+</div>
+                  <div
+                    className="value-button is-danger"
+                    id="decrease"
+                    // onClick={this.decreaseValue}
+                    value="Decrease Value"
+                  >-
+                  </div>
+
+
+
+                  <input
+                    className="is-size-4"
+                    type="number"
+                    id={'update value field id ' + i}
+                    value={item.weights[item.weights.length-1.].value}
+                  />
+
+
+
+
+                  <div
+                    className="value-button is-success"
+                    id={item.weights[item.weights.length-1.].value}
+                    onClick={this.increaseValue}
+
+                  >+
+                  </div>
                 </form>
 
 

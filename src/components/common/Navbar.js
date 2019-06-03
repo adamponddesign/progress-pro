@@ -35,7 +35,7 @@ class Navbar extends React.Component {
 
           <div className="navbar-brand">
             {/* Branding and burger menu */}
-            <Link to="/" className="navbar-item display is-size-4">Progress Pro</Link>
+            <div className="navbar-item display is-size-4">Progress Pro</div>
 
             <a
               role="button"
@@ -53,6 +53,7 @@ class Navbar extends React.Component {
 
             <div className="navbar-start">
               {/* Left-hand links */}
+              {Auth.isAuthenticated() && <Link to="/profile" className="navbar-item">Home</Link>}
               {/*      <Link to="/characters" className="navbar-item">Characters</Link>
               <Link to="/houses" className="navbar-item">Houses</Link>  */}
             </div>

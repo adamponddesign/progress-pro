@@ -82,7 +82,7 @@ class ExerciseItem extends React.Component {
 
 
   render() {
-    // console.log(this.state.data.weights[this.state.data.weights.length-1].date)
+    console.log(this.state)
     return (
       <div id="weight-up-down">
         <div className="is-size-5">{this.props.item.exercise.name}</div>
@@ -90,43 +90,77 @@ class ExerciseItem extends React.Component {
           <span className="is-size-4">{this.state.data.weights[this.state.data.weights.length-1].value}</span> kg
         </div>
 
-        <div
-          className='button is-danger'
-          onClick={this.decreaseValue}
-        >-
-        </div>
-
-        <input
-          className="trainFields is-size-4"
-          type="number"
-          value={this.state.currentWeight.value}
-          disabled={true}
-        />
-
-
-        <div
-          className="button is-success"
-          onClick={this.increaseValue}
-        >+
-        </div>
-
 
         {this.duplicateDateCheck() ? (
-          <div
-            onClick={this.handleSave}
-            className="button is-info"
-            disabled={true}>
 
-            Save New Weight
+          <div>
+            <div
+              className='button is-danger'
+
+              disabled
+            >-
+            </div>
+
+            <input
+              className="trainFields is-size-4"
+              type="number"
+              value={this.state.currentWeight.value}
+              disabled={true}
+            />
+
+
+            <div
+              className="button is-success"
+
+              disabled
+            >+
+            </div>
+
+
+
+            <div
+              onClick={this.handleSave}
+              className="button is-info"
+              disabled={true}>
+
+              Save New Weight
+            </div>
           </div>
-        ) : (
-          <div
-            onClick={this.handleSave}
-            className="button is-info"
-            disabled={false}>
 
-            Save New Weight
-          </div> )}
+
+        ) : (
+
+          <div>
+            <div
+              className='button is-danger'
+              onClick={this.decreaseValue}
+            >-
+            </div>
+
+            <input
+              className="trainFields is-size-4"
+              type="number"
+              value={this.state.currentWeight.value}
+              disabled={true}
+            />
+
+
+            <div
+              className="button is-success"
+              onClick={this.increaseValue}
+            >+
+            </div>
+
+            <div
+              onClick={this.handleSave}
+              className="button is-info"
+              disabled={false}>
+
+              Save New Weight
+            </div>
+          </div>
+
+        )}
 
       </div>
     )

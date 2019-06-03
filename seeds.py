@@ -92,7 +92,7 @@ with db_session():
     ExerciseItem(
         exercise=dumbbell_shoulder_press,
         day='Wednesday',
-        weights=[{'value':16, 'date':'2018-12-12'}, {'value':18, 'date': '2019-01-15'}],
+        weights=[{'value':16, 'date':'2018-12-12'}, {'value':18, 'date': '2019-01-15'}, {'value':18, 'date': '2019-01-25'}, {'value':20, 'date': '2019-02-02'}],
         programme=summer
     )
 

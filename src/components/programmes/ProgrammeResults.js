@@ -28,10 +28,15 @@ class ProgrammeResults extends React.Component {
       })
   }
 
+  makeChart(){
+
+
+  }
+
 
 
   render() {
-    // console.log(this.state.data)
+    console.log(this.state.data)
     if(!this.state.data) return null
     return (
       <section className="section">
@@ -51,9 +56,31 @@ class ProgrammeResults extends React.Component {
                   {item.weights.map(entry =>
                     <div key={entry.date}>
                       <span>{moment(entry.date).format('D MMM YYYY')}</span>
-                      <span>     {entry.value} kg</span>
+                      <span>    {entry.value} kg</span>
                     </div>
                   )}
+
+
+                  { /*         <div
+                    style={{
+                      width: '300px',
+                      height: '200px'
+                    }}
+                  >
+                    <Chart
+
+                      data={this.state.data.exercise_items}
+
+                      axes={[
+                        { primary: true, type: 'linear', position: 'bottom' },
+                        { type: 'linear', position: 'left' }
+                      ]}
+                    />
+                  </div> */}
+
+
+
+
                   <hr />
                 </div>
               )}
@@ -71,29 +98,7 @@ class ProgrammeResults extends React.Component {
 
 
 
-        <div
-          style={{
-            width: '400px',
-            height: '300px'
-          }}
-        >
-          <Chart
-            data={[
-              {
-                label: 'Series 1',
-                data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
-              },
-              {
-                label: 'Series 2',
-                data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
-              }
-            ]}
-            axes={[
-              { primary: true, type: 'linear', position: 'bottom' },
-              { type: 'linear', position: 'left' }
-            ]}
-          />
-        </div>
+
 
 
 

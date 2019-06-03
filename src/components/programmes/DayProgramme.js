@@ -2,7 +2,9 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 
-import { Link } from 'react-router-dom'
+import ExerciseItem from './ExerciseItem'
+
+// import { Link } from 'react-router-dom'
 
 
 class DayProgramme extends React.Component {
@@ -14,66 +16,57 @@ class DayProgramme extends React.Component {
       data: null
     }
 
-    this.increaseValue = this.increaseValue.bind(this)
-    this.onChangeHandler = this.onChangeHandler.bind(this)
+    // this.increaseValue = this.increaseValue.bind(this)
+
     // this.decreaseValue = this.decreaseValue.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
 
   }
 
   componentDidMount() {
+    // console.log(this.props)
     const token = Auth.getToken()
     axios.get(`/api/programmes/${this.props.match.params.id}/exercise-items${this.props.location.search}`, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
-
-      .then(res => {
-        this.setState({
-          data: res.data
-        })
-      })
-  }
-
-
-  increaseValue(e) {
-    // get the index of the exercise item
-    const indexOfClickedExcise = e.target.id
-    console.log('index of the exercise item from e.target.id', indexOfClickedExcise)
-
-
-
-    // get index of the last weight entry
-    const indexOfLastWeightEntry = (this.state.data[indexOfClickedExcise].weights.length-1)
-    console.log('index of the last weight entry', indexOfLastWeightEntry)
-
-
-    // Save last weight entry value to the variable 'value'
-    let value = (this.state.data[indexOfClickedExcise].weights[indexOfLastWeightEntry].value)
-    console.log('the value of the last weight entry was', value)
-
-    // add one to the last weight entry
-    value ++
-
-    console.log('the value increased by 1 equals', value)
-
-    // update state to reflect the change to the last weight last weight entry, of the clicked exercise only
-
-    // so on re render the figure in the input field of that exercise will be updated
-
-
+      .then(res => this.setState({ data: res.data }))
   }
 
 
 
 
-  onChangeHandler(){
-    console.log('onChangeHandler Activated')
+
+
+
+
+
+
+  handleSubmit(e) {
+    e.preventDefault()
+
+    let today = new Date()
+    const dd = String(today.getDate()).padStart(2, '0')
+    const mm = String(today.getMonth() + 1).padStart(2, '0')
+    const yyyy = today.getFullYear()
+
+    today = yyyy + '-' + mm + '-' + dd
+
+
+
+
+
+
+    console.log('handle submit click event', today)
+
   }
+
+
 
 
 
   render() {
     if(!this.state.data) return null
-    console.log(this.state.data)
+
     return (
       <section className="section">
         <div className="container">
@@ -84,50 +77,19 @@ class DayProgramme extends React.Component {
 
               <form>
 
-                {this.state.data.map((item, i) =>
-                  <div key={item.id} id="weight-up-down">
-                    <div className="is-size-5">{item.exercise.name}</div>
-                    <div>{'Last session you lifted '}
-                      <span className="is-size-4">{item.weights[item.weights.length-1.].value}</span> kg
-                    </div>
-
-
-
-
-                    <div
-                      className='button is-danger'
-                    >-
-                    </div>
-
-
-
-                    <input
-                      className="trainFields is-size-4"
-                      type="number"
-                      value={item.weights[item.weights.length-1.].value}
-                      onChange={this.onChangeHandler}
+                {this.state.data.map(item =>
+                  <div key={item.id}>
+                    <ExerciseItem
+                      item={item}
+                      match={this.props.match}
                     />
-
-
-
-
-                    <div
-                      className="button is-success"
-                      id={i}
-                      onClick={this.increaseValue}
-                    >+
-                    </div>
-
-
-
                     <hr />
                   </div>
-
                 )}
 
-                <Link className="buttons is-right" to="/profile">
-                  <button className="button is-success">Save Session</button>
-                </Link>
+
+                {/*  <button className="button is-success">Save Session</button>  */}
+
               </form>
 
             </div>

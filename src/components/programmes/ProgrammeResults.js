@@ -45,7 +45,7 @@ class ProgrammeResults extends React.Component {
               {this.state.data.exercise_items.map(item =>
 
                 <div key={item.id}>
-                  <div>{item.exercise.name}</div>
+                  <div className="subtitle is-size-6 table-title">{item.exercise.name}</div>
 
 
 
@@ -56,7 +56,7 @@ class ProgrammeResults extends React.Component {
 
                   <div
                     style={{
-                      width: '300px',
+                      width: '100%',
                       height: '200px'
                     }}
                   >
@@ -92,7 +92,7 @@ class ProgrammeResults extends React.Component {
                 </div>
               )}
               <Link className="buttons is-right" to="/profile">
-                <button className="button is-primary">Back to Home</button>
+                <button className="button is-info">Back to Home</button>
               </Link>
             </div>
           </div>

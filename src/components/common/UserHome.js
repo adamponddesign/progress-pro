@@ -61,7 +61,7 @@ class UserHome extends React.Component {
     axios.delete(`/api/programmes/${e.target.id}`, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
-      .then(res => this.props.history.push(`/programmes/${res.data.id}`))
+      .then(this.props.history.push('/profile'))
   }
 
 
@@ -72,7 +72,7 @@ class UserHome extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-
+    console.log('CLICKED')
     const token = Auth.getToken()
 
     axios.post('/api/programmes', this.state.data, {
@@ -91,7 +91,7 @@ class UserHome extends React.Component {
         <div className="container">
           <div className="columns is-centered">
             <div className="column is-half-desktop is-two-thirds-tablet">
-              <div className="title is-4">User Homepage</div>
+              <div className="title is-4 is-centered">User Homepage</div>
 
 
 
@@ -102,7 +102,7 @@ class UserHome extends React.Component {
                     <input
                       className="input"
                       name="name"
-                      placeholder="eg: Enter New Programme Name Here"
+                      placeholder="Enter New Programme Name"
                       onChange={this.handleChange}
                     />
                   </div>
@@ -114,27 +114,37 @@ class UserHome extends React.Component {
               </form>
 
               <hr />
+
+
               <div className="subtitle">Saved Programmes</div>
+
+
               {this.state.user.programmes.map((programme) =>
 
                 <div key={programme.id}>
 
 
 
-                  <div>{programme.name}</div>
+                  <div className="subtitle is-size-6">{programme.name}</div>
 
-                  {programme.days.map(day =>
-                    <Link to={`/programmes/${programme.id}/exercise-items?day=${day}`} key={day}>
-                      <div className="button">{day} Train</div>
-                    </Link>
-                  )}
+                  <div>
+                    {programme.days.map(day =>
+
+                      <Link to={`/programmes/${programme.id}/exercise-items?day=${day}`} key={day}>
+                        <div className="button">{day} Train</div>
+                      </Link>
+                    )}
+                  </div>
 
 
 
-                  <Link to={`/programmes/${programme.id}`} className="button is-warning">Edit Programme</Link>
+
+                  <div className="buttons">
+                    <Link to={`/programmes/${programme.id}`} className="button is-info">Edit Programme</Link>
 
 
-                  <div id={programme.id} onClick={this.handleDelete} className="button is-danger">Delete Programme</div>
+                    <div id={programme.id} onClick={this.handleDelete} className="button is-danger">Delete Programme</div>
+                  </div>
 
                   <hr />
 

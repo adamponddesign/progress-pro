@@ -71,42 +71,87 @@ with db_session():
     ExerciseItem(
         exercise=dumbbell_fly,
         day='Monday',
-        weights=[{'value':40, 'date':'2018-12-12'}, {'value':45, 'date': '2019-01-15'}],
+        weights=[
+        {'value':20, 'date':'2018-12-12'},
+        {'value':20, 'date': '2019-01-15'},
+        {'value':25, 'date':'2019-01-25'},
+        {'value':25, 'date':'2019-02-01'},
+        {'value':25, 'date':'2019-02-24'},
+        {'value':30, 'date':'2019-03-02'}
+        ],
         programme=summer
     )
 
     ExerciseItem(
         exercise=squat,
         day='Monday',
-        weights=[{'value':100, 'date':'2018-12-12'}, {'value':110, 'date': '2019-01-15'}],
+        weights=[
+        {'value':150, 'date':'2018-12-12'},
+        {'value':150, 'date':'2018-01-15'},
+        {'value':150, 'date':'2018-01-23'},
+        {'value':155, 'date':'2018-02-05'},
+        {'value':155, 'date':'2018-02-15'},
+        {'value':155, 'date': '2019-03-03'}
+        ],
         programme=summer
     )
 
     ExerciseItem(
         exercise=barbell_bench_press,
         day='Wednesday',
-        weights=[{'value':10, 'date':'2018-12-12'}, {'value':12, 'date': '2019-01-15'}],
+        weights=[
+        {'value':16, 'date':'2018-12-12'},
+        {'value':16, 'date':'2018-01-15'},
+        {'value':20, 'date':'2018-01-23'},
+        {'value':20, 'date':'2018-02-05'},
+        {'value':24, 'date':'2018-02-15'},
+        {'value':26, 'date': '2019-03-03'}
+        ],
         programme=summer
     )
 
     ExerciseItem(
         exercise=dumbbell_shoulder_press,
         day='Wednesday',
-        weights=[{'value':16, 'date':'2018-12-12'}, {'value':18, 'date': '2019-01-15'}, {'value':18, 'date': '2019-01-25'}, {'value':20, 'date': '2019-02-02'}],
+        weights=[
+        {'value':18, 'date':'2018-12-12'},
+        {'value':18, 'date':'2018-01-15'},
+        {'value':18, 'date':'2018-01-23'},
+        {'value':20, 'date':'2018-02-12'},
+        {'value':20, 'date':'2018-02-16'},
+        {'value':20, 'date': '2019-02-23'},
+        {'value':22, 'date': '2019-03-04'},
+        {'value':22, 'date': '2019-03-15'}
+        ],
         programme=summer
     )
 
     ExerciseItem(
         exercise=cable_seated_row,
         day='Friday',
-        weights=[{'value':80, 'date':'2018-12-12'}, {'value':85, 'date': '2019-01-15'}],
+        weights=[
+        {'value':100, 'date':'2018-12-12'},
+        {'value':100, 'date':'2018-01-15'},
+        {'value':120, 'date':'2018-01-29'},
+        {'value':120, 'date':'2018-02-12'},
+        {'value':125, 'date': '2019-02-20'},
+        {'value':130, 'date':'2018-02-25'}
+        ],
         programme=summer
     )
 
     ExerciseItem(
         exercise=leg_press,
         day='Friday',
-        weights=[{'value':150, 'date':'2018-12-12'}, {'value':170, 'date': '2019-01-15'}],
+        weights=[
+        {'value':160, 'date':'2018-12-12'},
+        {'value':160, 'date': '2019-01-15'},
+        {'value':160, 'date':'2018-01-29'},
+        {'value':150, 'date':'2018-02-01'},
+        {'value':150, 'date':'2018-02-09'},
+        {'value':140, 'date':'2018-03-01'},
+        {'value':140, 'date':'2018-03-04'}
+        ],
         programme=summer
     )
 
@@ -136,14 +181,14 @@ with db_session():
     ExerciseItem(
         exercise=cable_seated_row,
         day='Thursday',
-        weights=[{'value':80, 'date':'2018-12-12'}, {'value':80, 'date': '2019-01-15'}],
+        weights=[{'value':80, 'date':'2018-12-12'}, {'value':82, 'date': '2019-01-15'}],
         programme=winter
     )
 
     ExerciseItem(
         exercise=wide_grip_lat_pulldown,
         day='Sunday',
-        weights=[{'value':40, 'date':'2018-12-12'}, {'value':40, 'date': '2019-01-15'}],
+        weights=[{'value':40, 'date':'2018-12-12'}, {'value':42, 'date': '2019-01-15'}],
         programme=winter
     )
 

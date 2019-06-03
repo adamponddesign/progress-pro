@@ -138,12 +138,12 @@ class Show extends React.Component {
 
 
 
-                <button className="button is-warning">Add Exercise</button>
+                <button className="button is-success">Add Exercise</button>
               </form>
 
 
 
-              <table className="table is-fullwidth is-bordered">
+              <table className="table is-fullwidth">
                 <thead>
                   <tr>
 
@@ -163,7 +163,7 @@ class Show extends React.Component {
                       <td> {exercise.exercise.name} </td>
                       <td>
                         <div
-                          className="has-text-centered"
+                          className="is-centered button is-danger"
                           onClick={this.handleDelete}
                           value={exercise.id}
                           id={exercise.id}
@@ -181,7 +181,7 @@ class Show extends React.Component {
 
 
               <Link className="buttons is-right" to="/profile">
-                <button className="button is-success">Save Programme</button>
+                <div className="button is-info">Save Programme</div>
               </Link>
             </div>
           </div>

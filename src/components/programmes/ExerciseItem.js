@@ -17,6 +17,7 @@ class ExerciseItem extends React.Component {
     this.decreaseValue = this.decreaseValue.bind(this)
     this.onChangeHandler = this.onChangeHandler.bind(this)
     this.handleSave=this.handleSave.bind(this)
+
   }
 
   increaseValue() {
@@ -36,19 +37,35 @@ class ExerciseItem extends React.Component {
     return moment().format('YYYY-MM-DD')
   }
 
-  handleSave() {
 
+  duplicateDateCheck() {
+    const todaysDate = this.getDate()
+    const lastEntry = this.state.data.weights[this.state.data.weights.length-1].date
+    if (todaysDate === lastEntry)
+      return true
+    else
+      return false
+  }
+
+
+
+  handleSave() {
     // // make a copy of the data object on state (using spread)
     const data = { ...this.state.data }
 
-
     // push the currentWeight into the new data.weight array
     data.weights.push(this.state.currentWeight)
-    data.exercise_id = data.exercise.id
 
+    //create a new item within the data object called `exercise_id`
+    // and set onto it the nested data of the exercise id... which sit within the exercise object
+    data.exercise_id = data.exercise.id
+    // now data.exercise_id hold the exercise id only, which is what we want, so we can delete the old data.exercise object entry
     delete data.exercise
 
     // make an axios request to UPDATE the exercise item
+    // first arg = where to
+    // second arg = what you're sending
+    // third arg = any header to include
     axios.put(`/api/programmes/${this.props.match.params.id}/exercise-items/${this.state.data.id}`, data, {
       headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
     })
@@ -65,7 +82,7 @@ class ExerciseItem extends React.Component {
 
 
   render() {
-    console.log(this.props.item.exercise.name)
+    // console.log(this.state.data.weights[this.state.data.weights.length-1].date)
     return (
       <div id="weight-up-down">
         <div className="is-size-5">{this.props.item.exercise.name}</div>
@@ -73,16 +90,11 @@ class ExerciseItem extends React.Component {
           <span className="is-size-4">{this.state.data.weights[this.state.data.weights.length-1].value}</span> kg
         </div>
 
-
-
-
         <div
           className='button is-danger'
           onClick={this.decreaseValue}
         >-
         </div>
-
-
 
         <input
           className="trainFields is-size-4"
@@ -92,15 +104,29 @@ class ExerciseItem extends React.Component {
         />
 
 
-
-
         <div
           className="button is-success"
           onClick={this.increaseValue}
         >+
         </div>
 
-        <button onClick={this.handleSave} className="button is-info">Save New Weight</button>
+
+        {this.duplicateDateCheck() ? (
+          <div
+            onClick={this.handleSave}
+            className="button is-info"
+            disabled={true}>
+
+            Save New Weight
+          </div>
+        ) : (
+          <div
+            onClick={this.handleSave}
+            className="button is-info"
+            disabled={false}>
+
+            Save New Weight
+          </div> )}
 
       </div>
     )

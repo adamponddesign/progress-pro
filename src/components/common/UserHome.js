@@ -12,7 +12,7 @@ class UserHome extends React.Component {
 
     this.state = {
       data: {},
-      errors: {},
+      error: '',
       programmeName: '',
       user: {}
     }
@@ -54,12 +54,21 @@ class UserHome extends React.Component {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(() => {
+        // find the index of the programme that has been deleted, set it to `index`
         const index = this.state.user.programmes.findIndex(programme => programme.id === id)
+
+        // spread the programmes that are currently on state
+        // take two slices either side of the programme `index`
+        // set the two slices back on to the variable `programmes`
         const programmes = [
           ...this.state.user.programmes.slice(0, index),
           ...this.state.user.programmes.slice(index+1)
         ]
+
+        // spread the user object that is currently on state, and add to it the new `programmes`
         const user = { ...this.state.user, programmes }
+
+        // set the updated `user` object back on to state
         this.setState({ user })
       })
   }
@@ -67,18 +76,17 @@ class UserHome extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log('CLICKED')
     const token = Auth.getToken()
 
     axios.post('/api/programmes', this.state.data, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(res => this.props.history.push(`/programmes/${res.data.id}`))
+      .catch(() => this.setState({ error: 'Please enter a name for the new programme' }))
   }
 
 
   render() {
-    console.log(this.state.user)
     if(!this.state.user.programmes) return null
     return (
       <section className="section">
@@ -97,7 +105,7 @@ class UserHome extends React.Component {
                       onChange={this.handleChange}
                     />
                   </div>
-                  {this.state.errors.name && <div className="help is-danger">{this.state.errors.name}</div>}
+                  {this.state.error && <div className="help is-danger">{this.state.error}</div>}
                 </div>
                 <button className="button is-medium is-success">Create a New Programme</button>
               </form>
@@ -108,8 +116,8 @@ class UserHome extends React.Component {
 
               {this.state.user.programmes.map((programme) =>
 
-                <div key={programme.id}>
-                  <div className="is-size-5 programme-headings">{programme.name}</div>
+                <div className="programme-block" key={programme.id}>
+                  <div className="is-size-4 programme-headings">{programme.name}</div>
                   <div>
                     {programme.days.map(day =>
                       <Link to={`/programmes/${programme.id}/exercise-items?day=${day}`} key={day}>
@@ -121,10 +129,10 @@ class UserHome extends React.Component {
                     <Link to={`/programmes/${programme.id}`} className="button is-medium is-info">Edit Programme</Link>
                     <div id={programme.id} onClick={this.handleDelete} className="button is-medium is-danger">Delete Programme</div>
                   </div>
-                  <hr />
+
                 </div> // programme id closing wrapper
               )}
-
+              <hr />
               <div className="subtitle is-size-3">Results</div>
 
               {this.state.user.programmes.map((programme) =>

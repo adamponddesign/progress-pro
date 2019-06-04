@@ -1,15 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Julius+Sans+One&display=swap');
 
-.trainFields {
-  text-align: center;
-  width: 20%;
-}
 
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
+input {
+  font-family: 'Julius Sans One', sans-serif;
+  font-size: 1.4rem;
+}
+
+input.input {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
 
 html {
   background-color: white; /* For browsers that do not support gradients */
@@ -23,6 +28,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 22px;
+  font-weight: bold;
 }
 
 select {
@@ -34,14 +40,18 @@ select {
   font-size: 1.3rem;
 }
 
-input {
-  font-family: 'Julius Sans One', sans-serif;
-  font-size: 1.4rem;
+.select select:not([multiple]) {
+  width: 100vw;
 }
 
-input.input {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
+.trainFields {
+  text-align: center;
+  width: 20%;
+}
+
+
+.label:not(:last-child) {
+  margin: 0;
 }
 
 .label {
@@ -54,40 +64,71 @@ label.label:not(:last-child) {
 }
 
 
+.programme-headings {
+  color: white;
+  margin-bottom: 10px;
+  font-weight: bold;
+  margin-bottom: 2px;
+  text-align: center;
+}
+
+
+// button styling ••••••••••••••••••••••••••••••••••••
 .button {
   font-family: 'Julius Sans One', sans-serif;
   margin-right: 10px;
+  font-weight: bold;
 }
 
 .programme-home-buttons {
   margin-top: 10px
 }
 
-.programme-headings {
-  color: white;
-  margin-bottom: 10px;
-  font-weight: bold;
-  margin-bottom: 2px;
-}
-
-
-.label:not(:last-child) {
-  margin: 0;
-}
-
 .buttons .button {
   margin-top: 0.5rem;
 }
+
+.inc-dec-buttons {
+  margin: 0;
+}
+
+button.is-danger.is-level {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.plus-minus {
+  font-size: 1.8em;
+  line-height: 1px;
+}
+
+.del-but {
+  margin: 0;
+}
+
+.button.is-white.is-outlined:hover {
+  background-color: #24d160;
+  color: white;
+  font-weight: bold;
+}
+
+.button.is-white.is-outlined {
+  font-weight: bold;
+}
+
+.button.is-info {
+  background-color: #49b5eb;
+}
+
+
+
+
+
 
 
 .subtitle:not(:last-child) {
   margin-bottom: 10px;
 }
-
-
-// .select {
-//   margin: 10px 0;
-// }
 
 .table {
   margin-top: 15px;
@@ -100,38 +141,31 @@ label.label:not(:last-child) {
   font-weight: bold;
 }
 
-.inc-dec-buttons {
-  margin: 0;
-}
 
-button.is-danger.is-level {
-padding-top: 0;
-padding-bottom: 0;
-}
 
-.plus-minus {
-  font-size: 1.8em;
-  line-height: 1px;
+
+
+.programme-block {
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 12px;
 }
 
 
-.del-but {
-  margin: 0;
-}
 
-.button.is-white.is-outlined:hover {
-  background-color: #24d160;
-  color: white;
-}
-
-.button.is-info {
-  background-color: #49b5eb;
-}
 
 .title {
   color: white;
 }
 
+
+
+
+
+
+
+// error messages
 .help.is-danger {
   font-size: 20px;
   font-weight: bold;

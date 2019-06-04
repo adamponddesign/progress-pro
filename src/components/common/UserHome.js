@@ -140,7 +140,7 @@ class UserHome extends React.Component {
                     {programme.days.map(day =>
 
                       <Link to={`/programmes/${programme.id}/exercise-items?day=${day}`} key={day}>
-                        <div className="button">{day} Train</div>
+                        <div className="button programme-home-buttons">{day} Train</div>
                       </Link>
                     )}
                   </div>

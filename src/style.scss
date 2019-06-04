@@ -37,10 +37,15 @@ input {
   margin-right: 10px;
 }
 
+.programme-home-buttons {
+  margin-top: 10px
+}
+
 .programme-headings {
   color: white;
   margin-bottom: 10px;
   font-weight: bold;
+  margin-bottom: 2px;
 }
 
 
@@ -77,6 +82,17 @@ input {
 .inc-dec-buttons {
   margin: 0;
 }
+
+button.is-danger.is-level {
+padding-top: 0;
+padding-bottom: 0;
+}
+
+.plus-minus {
+  font-size: 1.8em;
+  line-height: 1px;
+}
+
 
 .del-but {
   margin: 0;

@@ -92,12 +92,15 @@ class ExerciseItem extends React.Component {
         </div>
 
 
-        <div className="has-text-centered level">
+        <div className="has-text-centered level is-mobile">
+
+
           <button
-            className='button is-danger inc-dec-buttons'
+            className='button is-danger level-item'
             onClick={this.decreaseValue}
             disabled={this.duplicateDateCheck()}
-          >-
+          >
+            <span className="plus-minus">-</span>
           </button>
 
           <input
@@ -109,11 +112,13 @@ class ExerciseItem extends React.Component {
 
 
           <button
-            className="button is-success"
+            className="button is-success level-item"
             onClick={this.increaseValue}
             disabled={this.duplicateDateCheck()}
-          >+
+          >
+            <span className="plus-minus">+</span>
           </button>
+
 
           <button
             onClick={this.handleSave}

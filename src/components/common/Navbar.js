@@ -35,7 +35,7 @@ class Navbar extends React.Component {
 
           <div className="navbar-brand">
             {/* Branding and burger menu */}
-            <div className="navbar-item display is-size-4 has-text-weight-bold">Progress Pro</div>
+            <div className="navbar-item display is-size-3 has-text-weight-bold">Progress Pro</div>
 
             <a
               role="button"

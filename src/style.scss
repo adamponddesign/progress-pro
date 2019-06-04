@@ -22,15 +22,37 @@ body {
   font-family: 'Julius Sans One', sans-serif;
   margin: 0;
   padding: 0;
+  font-size: 22px;
 }
 
 select {
   font-family: 'Julius Sans One', sans-serif;
+  font-size: 1.3rem;
+}
+
+.select {
+  font-size: 1.3rem;
 }
 
 input {
   font-family: 'Julius Sans One', sans-serif;
+  font-size: 1.4rem;
 }
+
+input.input {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.label {
+  font-size: 1.4rem;
+}
+
+label.label:not(:last-child) {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
 
 .button {
   font-family: 'Julius Sans One', sans-serif;
@@ -63,9 +85,9 @@ input {
 }
 
 
-.select {
-  margin: 10px 0;
-}
+// .select {
+//   margin: 10px 0;
+// }
 
 .table {
   margin-top: 15px;
@@ -75,7 +97,6 @@ input {
 
 .table-title{
   text-align: center;
-  color: white;
   font-weight: bold;
 }
 

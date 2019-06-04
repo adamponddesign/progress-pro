@@ -82,7 +82,7 @@ class Show extends React.Component {
         <div className="container">
           <div className="columns is-centered">
             <div className="column is-half-desktop is-two-thirds-tablet">
-              <div className="title is-4">{this.state.programme.name}</div>
+              <div className="title is-size-3">{this.state.programme.name}</div>
 
 
 
@@ -138,7 +138,7 @@ class Show extends React.Component {
 
 
 
-                <button className="button is-success">Add Exercise</button>
+                <button className="button is-success is-medium">Add Exercise</button>
               </form>
 
 
@@ -163,7 +163,7 @@ class Show extends React.Component {
                       <td> {exercise.exercise.name} </td>
                       <td className="has-text-centered">
                         <div
-                          className="is-centered button is-danger del"
+                          className="is-centered button is-danger del is-medium"
                           onClick={this.handleDelete}
                           value={exercise.id}
                           id={exercise.id}
@@ -181,7 +181,7 @@ class Show extends React.Component {
 
 
               <Link className="buttons is-right" to="/profile">
-                <div className="button is-info">Save Programme</div>
+                <div className="button is-info is-medium">Save Programme</div>
               </Link>
             </div>
           </div>

@@ -86,7 +86,7 @@ class ExerciseItem extends React.Component {
     // if(!this.getLastWeight()) return null
     return (
       <div id="weight-up-down">
-        <div className="is-size-5">{this.props.item.exercise.name}</div>
+        <div className="is-size-4 has-text-weight-bold">{this.props.item.exercise.name}</div>
         <div className="has-text-white">{'Last session you lifted '}
           <span className="is-size-4 has-text-white">{this.getLastWeight().value}</span> kg
         </div>
@@ -122,7 +122,7 @@ class ExerciseItem extends React.Component {
 
           <button
             onClick={this.handleSave}
-            className="button is-white  is-outlined level-item save-weight-buttons"
+            className="button is-white is-medium is-outlined level-item save-weight-buttons"
             disabled={this.duplicateDateCheck()}>
 
             Save New Weight

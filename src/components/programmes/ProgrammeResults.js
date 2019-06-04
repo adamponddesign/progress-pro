@@ -40,19 +40,19 @@ class ProgrammeResults extends React.Component {
           <div className="columns is-centered">
             <div className="column is-half-desktop is-two-thirds-tablet">
 
-              <div className="title is-4">{this.state.data.name} Results</div>
+              <div className="title is-3">{this.state.data.name} Results</div>
 
               {this.state.data.exercise_items.map(item =>
 
                 <div key={item.id}>
-                  <div className="subtitle is-size-6 table-title">{item.exercise.name}</div>
+                  <div className="subtitle is-size-4 table-title">{item.exercise.name}</div>
 
 
 
                   <div
                     style={{
                       width: '100%',
-                      height: '200px'
+                      height: '350px'
                     }}
                   >
 
@@ -87,7 +87,7 @@ class ProgrammeResults extends React.Component {
                 </div>
               )}
               <Link className="buttons is-right" to="/profile">
-                <button className="button is-info">Back to Home</button>
+                <button className="button is-info is-medium">Back to Home</button>
               </Link>
             </div>
           </div>

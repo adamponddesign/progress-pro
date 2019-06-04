@@ -102,7 +102,7 @@ class UserHome extends React.Component {
         <div className="container">
           <div className="columns is-centered">
             <div className="column is-half-desktop is-two-thirds-tablet">
-              <div className="title is-4 is-centered">Home</div>
+              <div className="title is-size-3 is-centered">Home</div>
 
 
 
@@ -121,13 +121,13 @@ class UserHome extends React.Component {
                 </div>
 
 
-                <button className="button is-success">Create a New Programme</button>
+                <button className="button is-medium is-success">Create a New Programme</button>
               </form>
 
               <hr />
 
 
-              <div className="subtitle">Saved Programmes</div>
+              <div className="subtitle is-size-3">Saved Programmes</div>
 
 
               {this.state.user.programmes.map((programme) =>
@@ -136,13 +136,13 @@ class UserHome extends React.Component {
 
 
 
-                  <div className="is-size-6 programme-headings">{programme.name}</div>
+                  <div className="is-size-5 programme-headings">{programme.name}</div>
 
                   <div>
                     {programme.days.map(day =>
 
                       <Link to={`/programmes/${programme.id}/exercise-items?day=${day}`} key={day}>
-                        <div className="button programme-home-buttons">{day} Train</div>
+                        <div className="button is-medium programme-home-buttons">{day} Train</div>
                       </Link>
                     )}
                   </div>
@@ -151,10 +151,10 @@ class UserHome extends React.Component {
 
 
                   <div className="buttons">
-                    <Link to={`/programmes/${programme.id}`} className="button is-info">Edit Programme</Link>
+                    <Link to={`/programmes/${programme.id}`} className="button is-medium is-info">Edit Programme</Link>
 
 
-                    <div id={programme.id} onClick={this.handleDelete} className="button is-danger">Delete Programme</div>
+                    <div id={programme.id} onClick={this.handleDelete} className="button is-medium is-danger">Delete Programme</div>
                   </div>
 
                   <hr />
@@ -163,11 +163,11 @@ class UserHome extends React.Component {
 
               )}
 
-              <div className="subtitle">Results</div>
+              <div className="subtitle is-size-3">Results</div>
 
               {this.state.user.programmes.map((programme) =>
 
-                <Link key={programme.id} to={`/programmes/${programme.id}/results`} className="button">{programme.name}</Link>
+                <Link key={programme.id} to={`/programmes/${programme.id}/results`} className="button is-medium">{programme.name}</Link>
 
               )}
 

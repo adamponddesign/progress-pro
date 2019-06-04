@@ -72,7 +72,7 @@ class DayProgramme extends React.Component {
           <div className="columns is-centered">
             <div className="column is-half-desktop is-two-thirds-tablet">
 
-              <div className="title is-4">{this.state.data[0].day}</div>
+              <div className="title is-3">{this.state.data[0].day}</div>
 
 
 
@@ -93,7 +93,7 @@ class DayProgramme extends React.Component {
 
 
               <Link className="buttons is-right" to="/profile">
-                <div className="button is-info">Session Completed</div>
+                <div className="button is-info is-medium">Session Completed</div>
               </Link>
 
 

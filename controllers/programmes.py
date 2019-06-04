@@ -3,7 +3,6 @@ from pony.orm import db_session
 from marshmallow import ValidationError
 from app import db
 from models.Programme import Programme, ProgrammeSchema
-from models.Exercise import Exercise
 from models.ExerciseItem import ExerciseItem, ExerciseItemSchema
 from lib.secure_route import secure_route
 

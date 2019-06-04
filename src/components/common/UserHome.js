@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import { Link } from 'react-router-dom'
+// import { FilePond } from 'react-filepond'
+// import 'filepond/dist/filepond.min.css'
 
 class UserHome extends React.Component {
 
@@ -161,10 +163,6 @@ class UserHome extends React.Component {
 
               )}
 
-
-
-
-
               <div className="subtitle">Results</div>
 
               {this.state.user.programmes.map((programme) =>
@@ -172,6 +170,15 @@ class UserHome extends React.Component {
                 <Link key={programme.id} to={`/programmes/${programme.id}/results`} className="button">{programme.name}</Link>
 
               )}
+
+              {/*  <hr />
+
+
+              <div className="subtitle">Images</div>
+
+              <FilePond allowMultiple={true}/>  */}
+
+
 
             </div>
           </div>

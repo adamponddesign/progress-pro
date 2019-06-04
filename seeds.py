@@ -23,7 +23,7 @@ with db_session():
 #seed exercises•••••••••••••••••••••••••••••••••••••••••••••••••••••••
     #arms
     bicep_curl = Exercise(name="Bicep Curl")
-    tricep_extension = Exercise(name="Tricep Extension")
+    tricep_pushdown = Exercise(name="Tricep Pushdown")
 
     #chest
     barbell_bench_press = Exercise(name="Barbell Bench Press")
@@ -31,14 +31,17 @@ with db_session():
 
     #shoulders
     dumbbell_shoulder_press = Exercise(name="Dumbbell Shoulder Press")
+    lateral_dumbbell_raise = Exercise(name="Lateral Dumbbell Raise")
 
     #legs
     squat = Exercise(name="Squat")
     leg_press = Exercise(name="Leg Press")
     leg_extension = Exercise(name="Leg Extension")
+    leg_curl = Exercise(name="Leg Curl")
+    calf_raise = Exercise(name="Calf Raise")
 
     #back
-    wide_grip_lat_pulldown = Exercise(name="Wide Grip Lat Pulldown")
+    lat_pulldown = Exercise(name="Lat Pulldown")
     cable_seated_row = Exercise(name="Cable Seated Row")
 
     #full body
@@ -202,7 +205,7 @@ with db_session():
     )
 
     ExerciseItem(
-        exercise=wide_grip_lat_pulldown,
+        exercise=lat_pulldown,
         day='Sunday',
         weights=[{'value':40, 'date':'2018-12-12'}, {'value':42, 'date': '2019-01-15'}],
         programme=winter
@@ -214,8 +217,5 @@ with db_session():
         weights=[{'value':30, 'date':'2018-12-12'}, {'value':35, 'date': '2019-01-15'}],
         programme=winter
     )
-
-
-# •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 
     db.commit()

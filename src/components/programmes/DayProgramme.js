@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
-
+import { Link } from 'react-router-dom'
 import ExerciseItem from './ExerciseItem'
 
 // import { Link } from 'react-router-dom'
@@ -89,7 +89,12 @@ class DayProgramme extends React.Component {
                 )}
 
 
-                {/*  <button className="button is-success">Save Session</button>  */}
+
+              
+
+                <Link className="buttons is-right" to="/profile">
+                  <div className="button is-info">Session Completed</div>
+                </Link>
 
               </form>
 

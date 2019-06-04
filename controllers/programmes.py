@@ -177,17 +177,15 @@ def delete_exercise_item(programme_id, item_id):
 @router.route('/programmes/<int:programme_id>/exercise-items/<int:item_id>', methods=['PUT'])
 @db_session
 @secure_route
-def update_exercise_item(programme_id, item_id):
-    schema = ProgrammeSchema()      # get/set the schema
-    exercise_item_schema = ExerciseItemSchema()
-    programme = Programme.get(id=programme_id)      #get/set programme id
+def update_exercise_item(programme_id, item_id):    # get/set the schema
+    schema = ExerciseItemSchema()
     exercise_item = ExerciseItem.get(id=item_id)    #get/set specific entry id
 
     if not exercise_item:
         abort(404)
 
     try:
-        data = exercise_item_schema.load(request.get_json())  #load the updated info onto data
+        data = schema.load(request.get_json())  #load the updated info onto data
         exercise_item.set(**data)       # add all the data to the programme
 
 
@@ -195,5 +193,5 @@ def update_exercise_item(programme_id, item_id):
     except ValidationError as err:
         return jsonify({'message': 'Validation failed', 'errors': err.messages}), 422
 
-    return schema.dumps(programme)
+    return schema.dumps(exercise_item)
     # return the whole programme data to the user, now with the item updated

@@ -11,18 +11,24 @@ class ExerciseItem extends React.Component {
     // if this.lastweight has any items in it's array (e.g. has length)
     // then return the last item in the array to the 'lastweight' variable
     // if not the return {value: 0 }
-    this.lastWeight = props.item.weights.length ? props.item.weights[props.item.weights.length-1] : { value: 0 }
-
 
     this.state = {
       data: props.item,
-      currentWeight: { ...this.lastWeight, date: this.getDate() }
+      currentWeight: { value: 0, data: this.getDate() }
     }
 
     this.increaseValue = this.increaseValue.bind(this)
     this.decreaseValue = this.decreaseValue.bind(this)
     this.handleSave=this.handleSave.bind(this)
 
+  }
+
+  componentDidMount() {
+    this.setState({ currentWeight: { ...this.getLastWeight(), date: this.getDate() } })
+  }
+
+  getLastWeight() {
+    return this.state.data.weights.length ? this.state.data.weights[this.state.data.weights.length-1] : { value: 0 }
   }
 
   increaseValue() {
@@ -45,7 +51,7 @@ class ExerciseItem extends React.Component {
 
   duplicateDateCheck() {
     const todaysDate = this.getDate()
-    const lastEntry = this.lastWeight.date
+    const lastEntry = this.getLastWeight().date
     return todaysDate === lastEntry
   }
 
@@ -71,31 +77,28 @@ class ExerciseItem extends React.Component {
     axios.put(`/api/programmes/${this.props.match.params.id}/exercise-items/${this.state.data.id}`, data, {
       headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
     })
-
-
-    // once the request has succeeded, update state with the current `data` object
-      .then(this.setState({ data }))
+      .then(() => this.setState({ data }))
   }
 
 
   render() {
     console.log(this)
-    // if(!this.lastWeight) return null
+    // if(!this.getLastWeight()) return null
     return (
       <div id="weight-up-down">
         <div className="is-size-5">{this.props.item.exercise.name}</div>
         <div className="has-text-white">{'Last session you lifted '}
-          <span className="is-size-4 has-text-white">{this.lastWeight.value}</span> kg
+          <span className="is-size-4 has-text-white">{this.getLastWeight().value}</span> kg
         </div>
 
 
         <div className="has-text-centered level">
-          <div
+          <button
             className='button is-danger inc-dec-buttons'
             onClick={this.decreaseValue}
             disabled={this.duplicateDateCheck()}
           >-
-          </div>
+          </button>
 
           <input
             className="trainFields is-size-4 level-item"
@@ -105,20 +108,20 @@ class ExerciseItem extends React.Component {
           />
 
 
-          <div
+          <button
             className="button is-success"
             onClick={this.increaseValue}
             disabled={this.duplicateDateCheck()}
           >+
-          </div>
+          </button>
 
-          <div
+          <button
             onClick={this.handleSave}
-            className="button is-info level-item"
+            className="button is-white  is-outlined level-item save-weight-buttons"
             disabled={this.duplicateDateCheck()}>
 
             Save New Weight
-          </div>
+          </button>
         </div>
 
       </div>

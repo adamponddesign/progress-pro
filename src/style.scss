@@ -78,3 +78,8 @@ input {
 .del-but {
   margin: 0;
 }
+
+.button.is-white.is-outlined:hover {
+  background-color: #24d160;
+  color: white;
+}

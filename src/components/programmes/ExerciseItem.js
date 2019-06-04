@@ -8,14 +8,19 @@ class ExerciseItem extends React.Component {
   constructor(props) {
     super(props)
 
+    // if this.lastweight has any items in it's array (e.g. has length)
+    // then return the last item in the array to the 'lastweight' variable
+    // if not the return {value: 0 }
+    this.lastWeight = props.item.weights.length ? props.item.weights[props.item.weights.length-1] : { value: 0 }
+
+
     this.state = {
       data: props.item,
-      currentWeight: { value: props.item.weights[props.item.weights.length-1].value, date: this.getDate() }
+      currentWeight: { ...this.lastWeight, date: this.getDate() }
     }
 
     this.increaseValue = this.increaseValue.bind(this)
     this.decreaseValue = this.decreaseValue.bind(this)
-    this.onChangeHandler = this.onChangeHandler.bind(this)
     this.handleSave=this.handleSave.bind(this)
 
   }
@@ -40,11 +45,8 @@ class ExerciseItem extends React.Component {
 
   duplicateDateCheck() {
     const todaysDate = this.getDate()
-    const lastEntry = this.state.data.weights[this.state.data.weights.length-1].date
-    if (todaysDate === lastEntry)
-      return true
-    else
-      return false
+    const lastEntry = this.lastWeight.date
+    return todaysDate === lastEntry
   }
 
 
@@ -76,91 +78,48 @@ class ExerciseItem extends React.Component {
   }
 
 
-  onChangeHandler(){
-    console.log('onChangeHandler Activated')
-  }
-
-
   render() {
-    console.log(this.state)
+    console.log(this)
+    // if(!this.lastWeight) return null
     return (
       <div id="weight-up-down">
         <div className="is-size-5">{this.props.item.exercise.name}</div>
-        <div>{'Last session you lifted '}
-          <span className="is-size-4">{this.state.data.weights[this.state.data.weights.length-1].value}</span> kg
+        <div className="has-text-white">{'Last session you lifted '}
+          <span className="is-size-4 has-text-white">{this.lastWeight.value}</span> kg
         </div>
 
 
-        {this.duplicateDateCheck() ? (
-
-          <div>
-            <div
-              className='button is-danger'
-
-              disabled
-            >-
-            </div>
-
-            <input
-              className="trainFields is-size-4"
-              type="number"
-              value={this.state.currentWeight.value}
-              disabled={true}
-            />
-
-
-            <div
-              className="button is-success"
-
-              disabled
-            >+
-            </div>
-
-
-
-            <div
-              onClick={this.handleSave}
-              className="button is-info"
-              disabled={true}>
-
-              Save New Weight
-            </div>
+        <div className="has-text-centered level">
+          <div
+            className='button is-danger inc-dec-buttons'
+            onClick={this.decreaseValue}
+            disabled={this.duplicateDateCheck()}
+          >-
           </div>
 
-
-        ) : (
-
-          <div>
-            <div
-              className='button is-danger'
-              onClick={this.decreaseValue}
-            >-
-            </div>
-
-            <input
-              className="trainFields is-size-4"
-              type="number"
-              value={this.state.currentWeight.value}
-              disabled={true}
-            />
+          <input
+            className="trainFields is-size-4 level-item"
+            type="number"
+            value={this.state.currentWeight.value}
+            disabled
+          />
 
 
-            <div
-              className="button is-success"
-              onClick={this.increaseValue}
-            >+
-            </div>
-
-            <div
-              onClick={this.handleSave}
-              className="button is-info"
-              disabled={false}>
-
-              Save New Weight
-            </div>
+          <div
+            className="button is-success"
+            onClick={this.increaseValue}
+            disabled={this.duplicateDateCheck()}
+          >+
           </div>
 
-        )}
+          <div
+            onClick={this.handleSave}
+            className="button is-info level-item"
+            disabled={this.duplicateDateCheck()}>
+
+            Save New Weight
+          </div>
+        </div>
 
       </div>
     )

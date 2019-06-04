@@ -88,9 +88,9 @@ class Show extends React.Component {
 
               <form onSubmit={this.handleSubmit}>
 
-                <div className="field is-horizontal">
+                <div className="field">
                   <label className="label">Day</label>
-                  <div className="control is-expanded">
+                  <div className="control">
                     <div className="field-body">
                       <div className="select">
 
@@ -113,9 +113,9 @@ class Show extends React.Component {
                   </div>
 
 
-                  <div className="field is-horizontal">
+                  <div className="field">
                     <label className="label">Exercise</label>
-                    <div className="control is-expanded">
+                    <div className="control">
                       <div className="select">
 
                         <select name="exercise_id" onChange={this.handleChange}>
@@ -161,9 +161,9 @@ class Show extends React.Component {
 
                       <td> {exercise.day} </td>
                       <td> {exercise.exercise.name} </td>
-                      <td>
+                      <td className="has-text-centered">
                         <div
-                          className="is-centered button is-danger"
+                          className="is-centered button is-danger del"
                           onClick={this.handleDelete}
                           value={exercise.id}
                           id={exercise.id}

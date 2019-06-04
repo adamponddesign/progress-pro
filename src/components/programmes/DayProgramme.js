@@ -66,7 +66,6 @@ class DayProgramme extends React.Component {
 
   render() {
     if(!this.state.data) return null
-
     return (
       <section className="section">
         <div className="container">
@@ -79,10 +78,12 @@ class DayProgramme extends React.Component {
 
                 {this.state.data.map(item =>
                   <div key={item.id}>
+
                     <ExerciseItem
                       item={item}
                       match={this.props.match}
                     />
+
                     <hr />
                   </div>
                 )}

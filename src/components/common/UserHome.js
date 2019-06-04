@@ -58,10 +58,19 @@ class UserHome extends React.Component {
 
   handleDelete(e) {
     const token = Auth.getToken()
-    axios.delete(`/api/programmes/${e.target.id}`, {
+    const id = parseInt(e.target.id)
+    axios.delete(`/api/programmes/${id}`, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
-      .then(this.props.history.push('/profile'))
+      .then(() => {
+        const index = this.state.user.programmes.findIndex(programme => programme.id === id)
+        const programmes = [
+          ...this.state.user.programmes.slice(0, index),
+          ...this.state.user.programmes.slice(index+1)
+        ]
+        const user = { ...this.state.user, programmes }
+        this.setState({ user })
+      })
   }
 
 
@@ -91,7 +100,7 @@ class UserHome extends React.Component {
         <div className="container">
           <div className="columns is-centered">
             <div className="column is-half-desktop is-two-thirds-tablet">
-              <div className="title is-4 is-centered">User Homepage</div>
+              <div className="title is-4 is-centered">Home</div>
 
 
 
@@ -125,7 +134,7 @@ class UserHome extends React.Component {
 
 
 
-                  <div className="subtitle is-size-6">{programme.name}</div>
+                  <div className="is-size-6 programme-headings">{programme.name}</div>
 
                   <div>
                     {programme.days.map(day =>

@@ -87,10 +87,10 @@ with db_session():
         day='Monday',
         weights=[
         {'value':150, 'date':'2018-12-12'},
-        {'value':150, 'date':'2018-01-15'},
-        {'value':150, 'date':'2018-01-23'},
-        {'value':155, 'date':'2018-02-05'},
-        {'value':155, 'date':'2018-02-15'},
+        {'value':150, 'date':'2019-01-15'},
+        {'value':150, 'date':'2019-01-23'},
+        {'value':155, 'date':'2019-02-05'},
+        {'value':155, 'date':'2019-02-15'},
         {'value':155, 'date': '2019-03-03'}
         ],
         programme=summer
@@ -101,10 +101,10 @@ with db_session():
         day='Wednesday',
         weights=[
         {'value':16, 'date':'2018-12-12'},
-        {'value':16, 'date':'2018-01-15'},
-        {'value':20, 'date':'2018-01-23'},
-        {'value':20, 'date':'2018-02-05'},
-        {'value':24, 'date':'2018-02-15'},
+        {'value':16, 'date':'2019-01-15'},
+        {'value':20, 'date':'2019-01-23'},
+        {'value':20, 'date':'2019-02-05'},
+        {'value':24, 'date':'2019-02-15'},
         {'value':26, 'date': '2019-03-03'}
         ],
         programme=summer
@@ -115,10 +115,10 @@ with db_session():
         day='Wednesday',
         weights=[
         {'value':18, 'date':'2018-12-12'},
-        {'value':18, 'date':'2018-01-15'},
-        {'value':18, 'date':'2018-01-23'},
-        {'value':20, 'date':'2018-02-12'},
-        {'value':20, 'date':'2018-02-16'},
+        {'value':18, 'date':'2019-01-15'},
+        {'value':18, 'date':'2019-01-23'},
+        {'value':20, 'date':'2019-02-12'},
+        {'value':20, 'date':'2019-02-16'},
         {'value':20, 'date': '2019-02-23'},
         {'value':22, 'date': '2019-03-04'},
         {'value':22, 'date': '2019-03-15'}
@@ -131,11 +131,11 @@ with db_session():
         day='Friday',
         weights=[
         {'value':100, 'date':'2018-12-12'},
-        {'value':100, 'date':'2018-01-15'},
-        {'value':120, 'date':'2018-01-29'},
-        {'value':120, 'date':'2018-02-12'},
+        {'value':100, 'date':'2019-01-15'},
+        {'value':120, 'date':'2019-01-29'},
+        {'value':120, 'date':'2019-02-12'},
         {'value':125, 'date': '2019-02-20'},
-        {'value':130, 'date':'2018-02-25'}
+        {'value':130, 'date':'2019-02-25'}
         ],
         programme=summer
     )
@@ -146,11 +146,11 @@ with db_session():
         weights=[
         {'value':160, 'date':'2018-12-12'},
         {'value':160, 'date': '2019-01-15'},
-        {'value':160, 'date':'2018-01-29'},
-        {'value':150, 'date':'2018-02-01'},
-        {'value':150, 'date':'2018-02-09'},
-        {'value':140, 'date':'2018-03-01'},
-        {'value':140, 'date':'2018-03-04'}
+        {'value':160, 'date':'2019-01-29'},
+        {'value':150, 'date':'2019-02-01'},
+        {'value':150, 'date':'2019-02-09'},
+        {'value':140, 'date':'2019-03-01'},
+        {'value':140, 'date':'2019-03-04'}
         ],
         programme=summer
     )

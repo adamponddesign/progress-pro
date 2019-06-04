@@ -13,7 +13,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 
 html {
   background-color: white; /* For browsers that do not support gradients */
-  background-image: linear-gradient(to bottom right, dodgerblue, white); /* Standard syntax (must be last) */
+  background-image: linear-gradient(to bottom right, grey, white); /* Standard syntax (must be last) */
   min-height: 100vh;
   overflow-y: auto;
 }
@@ -40,6 +40,7 @@ input {
 .programme-headings {
   color: white;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
 
@@ -58,7 +59,7 @@ input {
 
 
 .select {
-  margin: 0 20px;
+  margin: 10px 0;
 }
 
 .table {
@@ -69,6 +70,8 @@ input {
 
 .table-title{
   text-align: center;
+  color: white;
+  font-weight: bold;
 }
 
 .inc-dec-buttons {
@@ -81,5 +84,13 @@ input {
 
 .button.is-white.is-outlined:hover {
   background-color: #24d160;
+  color: white;
+}
+
+.button.is-info {
+  background-color: #49b5eb;
+}
+
+.title {
   color: white;
 }

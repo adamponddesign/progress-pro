@@ -74,10 +74,17 @@ with db_session():
         weights=[
         {'value':20, 'date':'2018-12-12'},
         {'value':20, 'date': '2019-01-15'},
-        {'value':25, 'date':'2019-01-25'},
-        {'value':25, 'date':'2019-02-01'},
+        {'value':15, 'date': '2019-01-17'},
+        {'value':15, 'date':'2019-01-25'},
+        {'value':20, 'date':'2019-02-01'},
+        {'value':25, 'date':'2019-02-03'},
         {'value':25, 'date':'2019-02-24'},
-        {'value':30, 'date':'2019-03-02'}
+        {'value':30, 'date':'2019-03-02'},
+        {'value':30, 'date':'2019-03-05'},
+        {'value':31, 'date':'2019-04-02'},
+        {'value':31, 'date':'2019-04-10'},
+        {'value':30, 'date':'2019-05-10'},
+        {'value':28, 'date':'2019-05-15'}
         ],
         programme=summer
     )
@@ -88,10 +95,12 @@ with db_session():
         weights=[
         {'value':150, 'date':'2018-12-12'},
         {'value':150, 'date':'2019-01-15'},
-        {'value':150, 'date':'2019-01-23'},
+        {'value':150, 'date':'2019-01-17'},
+        {'value':152, 'date':'2019-01-23'},
         {'value':155, 'date':'2019-02-05'},
         {'value':155, 'date':'2019-02-15'},
-        {'value':155, 'date': '2019-03-03'}
+        {'value':155, 'date': '2019-03-03'},
+        {'value':160, 'date': '2019-03-07'}
         ],
         programme=summer
     )
@@ -102,10 +111,13 @@ with db_session():
         weights=[
         {'value':16, 'date':'2018-12-12'},
         {'value':16, 'date':'2019-01-15'},
+        {'value':16, 'date':'2019-01-16'},
         {'value':20, 'date':'2019-01-23'},
         {'value':20, 'date':'2019-02-05'},
+        {'value':20, 'date':'2019-02-10'},
         {'value':24, 'date':'2019-02-15'},
-        {'value':26, 'date': '2019-03-03'}
+        {'value':24, 'date':'2019-03-03'},
+        {'value':26, 'date': '2019-03-15'}
         ],
         programme=summer
     )
@@ -132,7 +144,9 @@ with db_session():
         weights=[
         {'value':100, 'date':'2018-12-12'},
         {'value':100, 'date':'2019-01-15'},
+        {'value':100, 'date':'2019-01-16'},
         {'value':120, 'date':'2019-01-29'},
+        {'value':120, 'date':'2019-02-10'},
         {'value':120, 'date':'2019-02-12'},
         {'value':125, 'date': '2019-02-20'},
         {'value':130, 'date':'2019-02-25'}
@@ -147,10 +161,12 @@ with db_session():
         {'value':160, 'date':'2018-12-12'},
         {'value':160, 'date': '2019-01-15'},
         {'value':160, 'date':'2019-01-29'},
-        {'value':150, 'date':'2019-02-01'},
-        {'value':150, 'date':'2019-02-09'},
-        {'value':140, 'date':'2019-03-01'},
-        {'value':140, 'date':'2019-03-04'}
+        {'value':160, 'date':'2019-02-01'},
+        {'value':160, 'date':'2019-02-09'},
+        {'value':155, 'date':'2019-03-01'},
+        {'value':155, 'date':'2019-03-03'},
+        {'value':160, 'date':'2019-03-04'},
+        {'value':165, 'date':'2019-03-07'}
         ],
         programme=summer
     )
@@ -160,14 +176,14 @@ with db_session():
     ExerciseItem(
         exercise=squat,
         day='Tuesday',
-        weights=[{'value':200, 'date':'2018-12-12'}, {'value':210, 'date': '2019-01-15'}],
+        weights=[{'value':100, 'date':'2018-12-12'}, {'value':120, 'date': '2019-01-15'}],
         programme=winter
     )
 
     ExerciseItem(
         exercise=dumbbell_fly,
         day='Tuesday',
-        weights=[{'value':90, 'date':'2018-12-12'}, {'value':95, 'date': '2019-01-15'}],
+        weights=[{'value':20, 'date':'2018-12-12'}, {'value':20, 'date': '2019-01-15'}],
         programme=winter
     )
 

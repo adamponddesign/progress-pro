@@ -49,11 +49,6 @@ class ProgrammeResults extends React.Component {
 
 
 
-
-
-
-
-
                   <div
                     style={{
                       width: '100%',
@@ -71,7 +66,7 @@ class ProgrammeResults extends React.Component {
 
                       data={[
                         {
-                          label: 'Series 1',
+                          label: item.exercise.name,
                           data: item.weights.map(x => [x.date, x.value])
                         }
                       ]}
@@ -97,39 +92,6 @@ class ProgrammeResults extends React.Component {
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       </section>
     )

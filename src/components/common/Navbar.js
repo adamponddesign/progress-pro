@@ -35,7 +35,7 @@ class Navbar extends React.Component {
 
           <div className="navbar-brand">
             {/* Branding and burger menu */}
-            <div className="navbar-item display is-size-4">Progress Pro</div>
+            <div className="navbar-item display is-size-4 has-text-weight-bold">Progress Pro</div>
 
             <a
               role="button"
@@ -53,16 +53,16 @@ class Navbar extends React.Component {
 
             <div className="navbar-start">
               {/* Left-hand links */}
-              {Auth.isAuthenticated() && <Link to="/profile" className="navbar-item">Home</Link>}
+              {Auth.isAuthenticated() && <Link to="/profile" className="navbar-item has-text-weight-bold">Home</Link>}
               {/*      <Link to="/characters" className="navbar-item">Characters</Link>
               <Link to="/houses" className="navbar-item">Houses</Link>  */}
             </div>
 
             <div className="navbar-end">
               {/* Right-hand links */}
-              {!Auth.isAuthenticated() && <Link to="/register" className="navbar-item">Register</Link>}
-              {!Auth.isAuthenticated() && <Link to="/login" className="navbar-item">Login</Link>}
-              {Auth.isAuthenticated() && <a className="navbar-item" onClick={this.logout}>Logout</a>}
+              {!Auth.isAuthenticated() && <Link to="/register" className="navbar-item has-text-weight-bold">Register</Link>}
+              {!Auth.isAuthenticated() && <Link to="/login" className="navbar-item has-text-weight-bold">Login</Link>}
+              {Auth.isAuthenticated() && <a className="navbar-item has-text-weight-bold" onClick={this.logout}>Logout</a>}
             </div>
           </div>
         </div>

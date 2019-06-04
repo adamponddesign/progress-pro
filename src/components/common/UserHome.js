@@ -15,13 +15,11 @@ class UserHome extends React.Component {
       errors: {},
       programmeName: '',
       user: {}
-      // programmes: []
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
-
   }
 
 
@@ -30,7 +28,6 @@ class UserHome extends React.Component {
     axios.get('/api/profile', {
       headers: { 'Authorization': `Bearer ${token}` }
     })
-
       .then(res => {
         res.data.programmes = res.data.programmes.map(programme => {
           let days = programme.exercise_items.map(exercise => exercise.day)
@@ -39,23 +36,15 @@ class UserHome extends React.Component {
           // console.log(days)
           return programme
         })
-
         this.setState({ user: res.data })
       })
   }
-
-
 
 
   handleChange(e) {
     const data = { ...this.state.data, [e.target.name]: e.target.value }
     this.setState({ data })
   }
-
-
-
-
-
 
 
   handleDelete(e) {
@@ -76,11 +65,6 @@ class UserHome extends React.Component {
   }
 
 
-
-
-
-
-
   handleSubmit(e) {
     e.preventDefault()
     console.log('CLICKED')
@@ -93,7 +77,6 @@ class UserHome extends React.Component {
   }
 
 
-
   render() {
     console.log(this.state.user)
     if(!this.state.user.programmes) return null
@@ -104,10 +87,7 @@ class UserHome extends React.Component {
             <div className="column is-half-desktop is-two-thirds-tablet">
               <div className="title is-size-3 is-centered">Home</div>
 
-
-
               <form onSubmit={this.handleSubmit}>
-
                 <div className="field">
                   <div className="control">
                     <input
@@ -119,66 +99,46 @@ class UserHome extends React.Component {
                   </div>
                   {this.state.errors.name && <div className="help is-danger">{this.state.errors.name}</div>}
                 </div>
-
-
                 <button className="button is-medium is-success">Create a New Programme</button>
               </form>
 
               <hr />
 
-
               <div className="subtitle is-size-3">Saved Programmes</div>
-
 
               {this.state.user.programmes.map((programme) =>
 
                 <div key={programme.id}>
-
-
-
                   <div className="is-size-5 programme-headings">{programme.name}</div>
-
                   <div>
                     {programme.days.map(day =>
-
                       <Link to={`/programmes/${programme.id}/exercise-items?day=${day}`} key={day}>
                         <div className="button is-medium programme-home-buttons">{day} Train</div>
                       </Link>
                     )}
                   </div>
-
-
-
-
                   <div className="buttons">
                     <Link to={`/programmes/${programme.id}`} className="button is-medium is-info">Edit Programme</Link>
-
-
                     <div id={programme.id} onClick={this.handleDelete} className="button is-medium is-danger">Delete Programme</div>
                   </div>
-
                   <hr />
-
                 </div> // programme id closing wrapper
-
               )}
 
               <div className="subtitle is-size-3">Results</div>
 
               {this.state.user.programmes.map((programme) =>
-
-                <Link key={programme.id} to={`/programmes/${programme.id}/results`} className="button is-medium">{programme.name}</Link>
-
+                <Link
+                  key={programme.id}
+                  to={`/programmes/${programme.id}/results`}
+                  className="button is-medium"
+                >{programme.name}
+                </Link>
               )}
 
               {/*  <hr />
-
-
               <div className="subtitle">Images</div>
-
               <FilePond allowMultiple={true}/>  */}
-
-
 
             </div>
           </div>

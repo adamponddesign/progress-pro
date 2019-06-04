@@ -131,3 +131,12 @@ padding-bottom: 0;
 .title {
   color: white;
 }
+
+.help.is-danger {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: red;
+  color: white;
+  border: 1px solid white;
+  text-align: center;
+}

@@ -7,7 +7,7 @@ const Home = () => {
       <div className="hero-body">
         <div className="container">
           <h1 className="title display is-1">Progress Pro</h1>
-          <div className="subtitle display is-4">GYM Programme Creator and Results Tracker</div>
+          <div className="subtitle display is-4">Gym Programme Creator and Results Tracker</div>
 
 
           <div className="buttons is-left">

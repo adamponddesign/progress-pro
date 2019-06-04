@@ -27,7 +27,7 @@ class Register extends React.Component {
     console.log(this.state)
     axios.post('/api/register', this.state.data)
       .then(() => this.props.history.push('/login')) // redirect the user to the login page...
-      .catch(err => this.setState({ errors: err.response.data.errors }))
+      .catch(err => this.setState({ errors: err.response.data.error }))
   }
 
   render() {
@@ -48,7 +48,7 @@ class Register extends React.Component {
                       onChange={this.handleChange}
                     />
                   </div>
-                  {/*{this.state.errors.name && <div className="help is-danger">{this.state.errors.name}</div>} */}
+                  {this.state.errors.name && <div className="help is-danger">{this.state.errors.name}</div>}
                 </div>
                 <div className="field">
                   <label className="label">Email</label>
@@ -60,7 +60,7 @@ class Register extends React.Component {
                       onChange={this.handleChange}
                     />
                   </div>
-                  {/*{this.state.errors.email && <div className="help is-danger">{this.state.errors.email}</div>}*/}
+                  {this.state.errors.email && <div className="help is-danger">{this.state.errors.email}</div>}
                 </div>
                 <div className="field">
                   <label className="label">Password</label>
@@ -73,7 +73,7 @@ class Register extends React.Component {
                       onChange={this.handleChange}
                     />
                   </div>
-                  {/*{this.state.errors.password && <div className="help is-danger">{this.state.errors.password}</div>}*/}
+                  {this.state.errors.password && <div className="help is-danger">{this.state.errors.password}</div>}
                 </div>
                 <div className="field">
                   <label className="label">Password Confirmation</label>
@@ -86,7 +86,7 @@ class Register extends React.Component {
                       onChange={this.handleChange}
                     />
                   </div>
-                  {/*{{this.state.errors.password_confirmation && <div className="help is-danger">{this.state.errors.password_confirmation}</div>}*/}
+                  {this.state.errors.password_confirmation && <div className="help is-danger">{this.state.errors.password_confirmation}</div>}
                 </div>
                 <button className="button is-success is-medium">Submit</button>
               </form>

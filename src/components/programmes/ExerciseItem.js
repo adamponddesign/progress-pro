@@ -20,7 +20,6 @@ class ExerciseItem extends React.Component {
     this.increaseValue = this.increaseValue.bind(this)
     this.decreaseValue = this.decreaseValue.bind(this)
     this.handleSave=this.handleSave.bind(this)
-
   }
 
   componentDidMount() {
@@ -56,7 +55,6 @@ class ExerciseItem extends React.Component {
   }
 
 
-
   handleSave() {
     // // make a copy of the data object on state (using spread)
     const data = { ...this.state.data }
@@ -82,18 +80,13 @@ class ExerciseItem extends React.Component {
 
 
   render() {
-    console.log(this)
-    // if(!this.getLastWeight()) return null
     return (
       <div id="weight-up-down">
         <div className="is-size-4 has-text-weight-bold">{this.props.item.exercise.name}</div>
         <div className="has-text-white">{'Last session you lifted '}
           <span className="is-size-4 has-text-white">{this.getLastWeight().value}</span> kg
         </div>
-
-
         <div className="has-text-centered level is-mobile">
-
 
           <button
             className='button is-danger level-item'
@@ -110,7 +103,6 @@ class ExerciseItem extends React.Component {
             disabled
           />
 
-
           <button
             className="button is-success level-item"
             onClick={this.increaseValue}
@@ -119,16 +111,13 @@ class ExerciseItem extends React.Component {
             <span className="plus-minus">+</span>
           </button>
 
-
           <button
             onClick={this.handleSave}
             className="button is-white is-medium is-outlined level-item save-weight-buttons"
             disabled={this.duplicateDateCheck()}>
-
             Save New Weight
           </button>
         </div>
-
       </div>
     )
   }

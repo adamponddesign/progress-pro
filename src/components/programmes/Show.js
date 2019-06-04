@@ -4,8 +4,6 @@ import Auth from '../../lib/Auth'
 import Promise from 'bluebird'
 import { Link } from 'react-router-dom'
 
-// const userid = Auth.getPayload().sub
-
 class Show extends React.Component {
 
   constructor() {
@@ -21,7 +19,6 @@ class Show extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
-
   }
 
 
@@ -33,8 +30,6 @@ class Show extends React.Component {
       .then(res => {
         this.setState({ exercises: res.exercises, programme: res.programme })
       })
-
-    // .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
 
@@ -48,7 +43,6 @@ class Show extends React.Component {
         this.setState({ programme: res.data })
       })
   }
-
 
 
   handleChange(e) {
@@ -69,8 +63,6 @@ class Show extends React.Component {
       .then(res => {
         this.setState({ programme: res.data })
       })
-    // .catch(err => this.setState({ errors: err.response.data.errors }))
-
   }
 
 
@@ -83,21 +75,14 @@ class Show extends React.Component {
           <div className="columns is-centered">
             <div className="column is-half-desktop is-two-thirds-tablet">
               <div className="title is-size-3">{this.state.programme.name}</div>
-
-
-
               <form onSubmit={this.handleSubmit}>
-
                 <div className="field">
                   <label className="label">Day</label>
                   <div className="control">
                     <div className="field-body">
                       <div className="select">
-
                         <select name="day" onChange={this.handleChange}>
                           <option>Select dropdown</option>
-
-
                           <option value="Monday" name="monday">Monday</option>
                           <option value="Tuesday" name="tuesday">Tuesday</option>
                           <option value="Wednesday" name="wednesday">Wednesday</option>
@@ -105,29 +90,24 @@ class Show extends React.Component {
                           <option value="Friday" name="friday">Friday</option>
                           <option value="Saturday" name="saturday">Saturday</option>
                           <option value="Sunday" name="sunday">Sunday</option>
-
                         </select>
                       </div>
                     </div>
-                    {/*  {this.state.errors.day && <div className="help is-danger">{this.state.errors.day}</div>} */}
                   </div>
-
-
                   <div className="field">
                     <label className="label">Exercise</label>
                     <div className="control">
                       <div className="select">
-
                         <select name="exercise_id" onChange={this.handleChange}>
                           <option>Select dropdown</option>
-                          {this.state.exercises.map(exercise =>
 
+                          {this.state.exercises.map(exercise =>
                             <option
                               key={exercise.id}
                               value={exercise.id}
-
                             >{exercise.name}</option>
                           )}
+
                         </select>
                       </div>
                     </div>
@@ -135,30 +115,19 @@ class Show extends React.Component {
                   </div>
 
                 </div> {/*field body closing tag*/}
-
-
-
                 <button className="button is-success is-medium">Add Exercise</button>
               </form>
-
-
-
               <table className="table is-fullwidth">
                 <thead>
                   <tr>
-
                     <th className="has-text-centered">Day</th>
                     <th className="has-text-centered">Exercises</th>
                     <th className="has-text-centered"></th>
-
                   </tr>
-
                 </thead>
                 <tbody>
                   {this.state.programme.exercise_items.map(exercise =>
                     <tr key={exercise.id} >
-
-
                       <td> {exercise.day} </td>
                       <td> {exercise.exercise.name} </td>
                       <td className="has-text-centered">
@@ -170,16 +139,10 @@ class Show extends React.Component {
                         >Delete
                         </div>
                       </td>
-
-
                     </tr>
-
                   )}
-
                 </tbody>
               </table>
-
-
               <Link className="buttons is-right" to="/profile">
                 <div className="button is-info is-medium">Save Programme</div>
               </Link>

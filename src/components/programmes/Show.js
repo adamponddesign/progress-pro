@@ -75,9 +75,12 @@ class Show extends React.Component {
           <div className="columns is-centered">
             <div className="column is-half-desktop is-two-thirds-tablet">
               <div className="title is-size-3">{this.state.programme.name}</div>
+              {/* form start •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• */}
               <form onSubmit={this.handleSubmit}>
                 <div className="field">
                   <label className="label">Day</label>
+
+                  {/* day dropdown */}
                   <div className="control">
                     <div className="field-body">
                       <div className="select">
@@ -94,29 +97,29 @@ class Show extends React.Component {
                       </div>
                     </div>
                   </div>
+
+                  {/* exercises dropdown */}
                   <div className="field">
                     <label className="label">Exercise</label>
                     <div className="control">
                       <div className="select">
                         <select name="exercise_id" onChange={this.handleChange}>
                           <option>Select dropdown</option>
-
                           {this.state.exercises.map(exercise =>
                             <option
                               key={exercise.id}
                               value={exercise.id}
                             >{exercise.name}</option>
                           )}
-
                         </select>
                       </div>
                     </div>
-
                   </div>
-
-                </div> {/*field body closing tag*/}
+                </div>
                 <button className="button is-success is-medium">Add Exercise</button>
               </form>
+              {/* form end ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• */}
+              {/* table start •••••••••••••••••••••••••••••••••••••••••••••••••••••••••• */}
               <table className="table is-fullwidth">
                 <thead>
                   <tr>
@@ -143,6 +146,7 @@ class Show extends React.Component {
                   )}
                 </tbody>
               </table>
+              {/* table end ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• */}
               <Link className="buttons is-right" to="/profile">
                 <div className="button is-info is-medium">Save Programme</div>
               </Link>

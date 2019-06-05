@@ -88,6 +88,7 @@ class ExerciseItem extends React.Component {
         </div>
         <div className="has-text-centered level is-mobile">
 
+          {/* decrease button */}
           <button
             className='button is-danger level-item'
             onClick={this.decreaseValue}
@@ -95,14 +96,14 @@ class ExerciseItem extends React.Component {
           >
             <span className="plus-minus">-</span>
           </button>
-
+          {/* weight display */}
           <input
             className="trainFields is-size-4 level-item"
             type="number"
             value={this.state.currentWeight.value}
             disabled
           />
-
+          {/* increase button */}
           <button
             className="button is-success level-item"
             onClick={this.increaseValue}
@@ -110,7 +111,7 @@ class ExerciseItem extends React.Component {
           >
             <span className="plus-minus">+</span>
           </button>
-
+          {/* save weight button */}
           <button
             onClick={this.handleSave}
             className="button is-white is-medium is-outlined level-item save-weight-buttons"

@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Julius+Sans+One&display=swap');
 
+html {
+  background-color: white; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to bottom right, grey, white); /* Standard syntax (must be last) */
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+body {
+  font-family: 'Julius Sans One', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 22px;
+  font-weight: bold;
+}
 
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -16,20 +30,6 @@ input.input {
   margin-bottom: 10px;
 }
 
-html {
-  background-color: white; /* For browsers that do not support gradients */
-  background-image: linear-gradient(to bottom right, grey, white); /* Standard syntax (must be last) */
-  min-height: 100vh;
-  overflow-y: auto;
-}
-
-body {
-  font-family: 'Julius Sans One', sans-serif;
-  margin: 0;
-  padding: 0;
-  font-size: 22px;
-  font-weight: bold;
-}
 
 select {
   font-family: 'Julius Sans One', sans-serif;
@@ -120,11 +120,7 @@ button.is-danger.is-level {
   background-color: #49b5eb;
 }
 
-
-
-
-
-
+//  •••••••••••••••••••••••••••••••••••••••••••••
 
 .subtitle:not(:last-child) {
   margin-bottom: 10px;
@@ -141,10 +137,6 @@ button.is-danger.is-level {
   font-weight: bold;
 }
 
-
-
-
-
 .programme-block {
   border: 1px solid white;
   border-radius: 10px;
@@ -153,19 +145,13 @@ button.is-danger.is-level {
 }
 
 
-
-
 .title {
   color: white;
 }
 
 
+// error messages ••••••••••••••••••••••••••••••••••••••
 
-
-
-
-
-// error messages
 .help.is-danger {
   font-size: 20px;
   font-weight: bold;

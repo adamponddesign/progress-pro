@@ -32,11 +32,10 @@ class Navbar extends React.Component {
     return (
       <nav className="navbar">
         <div className="container">
-
           <div className="navbar-brand">
-            {/* Branding and burger menu */}
+            {/* Logo */}
             <div className="navbar-item display is-size-3 has-text-weight-bold">Progress Pro</div>
-
+            {/* burger menu */}
             <a
               role="button"
               className={`navbar-burger${this.state.active ? ' is-active' : ''}`}
@@ -49,13 +48,9 @@ class Navbar extends React.Component {
           </div>
 
           <div className={`navbar-menu${this.state.active ? ' is-active' : ''}`}>
-            {/* Everything else */}
-
             <div className="navbar-start">
               {/* Left-hand links */}
               {Auth.isAuthenticated() && <Link to="/profile" className="navbar-item has-text-weight-bold">Home</Link>}
-              {/*      <Link to="/characters" className="navbar-item">Characters</Link>
-              <Link to="/houses" className="navbar-item">Houses</Link>  */}
             </div>
 
             <div className="navbar-end">
@@ -71,5 +66,4 @@ class Navbar extends React.Component {
   }
 }
 
-// `withRouter` gives the Navbar `history` via props
 export default withRouter(Navbar)

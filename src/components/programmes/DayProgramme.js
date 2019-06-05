@@ -15,7 +15,6 @@ class DayProgramme extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(this.props)
     const token = Auth.getToken()
     axios.get(`/api/programmes/${this.props.match.params.id}/exercise-items${this.props.location.search}`, {
       headers: { 'Authorization': `Bearer ${token}` }

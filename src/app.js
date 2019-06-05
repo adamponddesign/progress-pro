@@ -25,8 +25,6 @@ class App extends React.Component {
           <Navbar />
           <FlashMessages />
           <Switch>
-
-
             <SecureRoute path="/programmes/:id/exercise-items/" component={DayProgramme} />
             <SecureRoute path="/programmes/:id/results/" component={ProgrammeResults} />
             <SecureRoute path="/programmes/:id" component={ProgrammesShow} />
@@ -35,8 +33,6 @@ class App extends React.Component {
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
             <Route exact path="/" component={Home} />
-
-
           </Switch>
         </div>
       </Router>

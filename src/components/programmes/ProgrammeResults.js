@@ -37,6 +37,7 @@ class ProgrammeResults extends React.Component {
                 <div key={item.id}>
                   <div className="subtitle is-size-4 table-title">{item.exercise.name}</div>
 
+                  {/*  chart start •••••••••••••••••••••••••••••••••••••••*/}
                   <div style={{ width: '100%', height: '350px' }}>
                     <Chart
                       series={{ type: 'area' }}
@@ -53,6 +54,8 @@ class ProgrammeResults extends React.Component {
                       ]}
                     />
                   </div>
+                  {/* chart end ••••••••••••••••••••••••••••••••••••••••••••*/}
+
                   <hr />
                 </div>
               )}

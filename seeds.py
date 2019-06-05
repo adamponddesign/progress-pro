@@ -10,17 +10,22 @@ db.drop_all_tables(with_all_data=True)
 db.create_tables()
 
 with db_session():
+
     schema = UserSchema()
+#seed user •••••••••••••••••••••••••••••••••••••••••••••••••••••••
     adam_p = User(
         name='adampond',
         email='adam.pond@hotmail.co.uk',
         password_hash=schema.generate_hash('pass')
     )
 
+    poser_pete = User(
+        name="Poser Pete",
+        email="pete@hotmail.com",
+        password_hash=schema.generate_hash('pass')
+    )
+#seed exercises •••••••••••••••••••••••••••••••••••••••••••••••••••••••
 
-
-
-#seed exercises•••••••••••••••••••••••••••••••••••••••••••••••••••••••
     #arms
     bicep_curl = Exercise(name="Bicep Curl")
     tricep_pushdown = Exercise(name="Tricep Pushdown")
@@ -47,17 +52,6 @@ with db_session():
     #full body
     dead_lift = Exercise(name="Dead Lift")
 
-# seed members ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
-    poser_pete = User(
-        name="Poser Pete",
-        email="pete@hotmail.com",
-        password_hash=schema.generate_hash('pass')
-        )
-    # insta_stacey = User(name="Insta Stacey")
-    # big_stan = User(name="Big Stan")
-    # big_tony = User(name="Big Tony")
-    # weedy_will = User(name="Weedy Will")
-    # ronnie_on_roids = User(name="Ronnie On Roids")
 
 # seed programmes •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     summer = Programme(
@@ -240,7 +234,7 @@ with db_session():
         programme=summer
     )
 
-# •••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# seed exercise items •••••••••••••••••••••••••••••••••••••••••••••••••••••••
 
     ExerciseItem(
         exercise=squat,

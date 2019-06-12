@@ -92,7 +92,7 @@ class UserHome extends React.Component {
       <section className="section">
         <div className="container">
           <div className="columns is-centered">
-            <div className="column is-half-desktop is-two-thirds-tablet">
+            <div className="column is-two-thirds-desktop is-two-thirds-tablet">
               <div className="title is-size-3 is-centered">Home</div>
 
               <form onSubmit={this.handleSubmit}>
@@ -126,8 +126,9 @@ class UserHome extends React.Component {
                     )}
                   </div>
                   <div className="buttons">
-                    <Link to={`/programmes/${programme.id}`} className="button is-medium is-info">Edit Programme</Link>
-                    <div id={programme.id} onClick={this.handleDelete} className="button is-medium is-danger">Delete Programme</div>
+                    <Link to={`/programmes/${programme.id}`}>
+                      <div className="button is-medium is-info edit-del-buttons">Edit Programme</div></Link>
+                    <div id={programme.id} onClick={this.handleDelete} className="button is-medium is-danger edit-del-buttons">Delete Programme</div>
                   </div>
 
                 </div> // programme id closing wrapper

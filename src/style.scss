@@ -21,7 +21,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 }
 
 input {
-  font-family: 'Julius Sans One', sans-serif;
+
   font-size: 1.4rem;
 }
 
@@ -47,6 +47,8 @@ select {
 .trainFields {
   text-align: center;
   width: 20%;
+  height: 35px;
+  margin-top: 10px;
 }
 
 
@@ -74,9 +76,12 @@ label.label:not(:last-child) {
 
 
 // button styling ••••••••••••••••••••••••••••••••••••
+
+
 .button {
   font-family: 'Julius Sans One', sans-serif;
   margin-right: 10px;
+  margin-top: 10px;
   font-weight: bold;
 }
 
@@ -85,7 +90,7 @@ label.label:not(:last-child) {
 }
 
 .buttons .button {
-  margin-top: 0.5rem;
+  margin-bottom: 0;
 }
 
 .inc-dec-buttons {
@@ -120,6 +125,16 @@ button.is-danger.is-level {
   background-color: #49b5eb;
 }
 
+@media screen and (max-width: 768px) {
+.level-item:not(:last-child) {
+     margin-bottom: 0;
+   }
+}
+
+.buttons:last-child {
+     margin-bottom: 0;
+     margin-top: 10px;
+}
 //  •••••••••••••••••••••••••••••••••••••••••••••
 
 .subtitle:not(:last-child) {
@@ -149,6 +164,10 @@ button.is-danger.is-level {
   color: white;
 }
 
+.level-item {
+  flex-shrink: inherit;
+}
+
 
 // error messages ••••••••••••••••••••••••••••••••••••••
 
@@ -159,4 +178,62 @@ button.is-danger.is-level {
   color: white;
   border: 1px solid white;
   text-align: center;
+}
+
+// media >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  input.input {
+    font-size: 1rem;
+    margin-bottom: -10px;
+  }
+
+  .button.is-medium {
+      font-size: 1rem;
+  }
+
+  body {
+    font-size: 16px;
+  }
+
+  .level.is-mobile .level-item:not(:last-child) {
+    margin-bottom: 0;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+  .select select {
+    font-size: 0.9rem;
+  }
+
+  .select:not(.is-multiple):not(.is-loading)::after, .navbar-link:not(.is-arrowless)::after {
+    top: 34%;
+  }
+
+  .table td {
+  padding: 0.4em 0.5em;
+  }
+
+  .is-size-3 {
+  font-size: 1.2rem !important;
+  }
+  .is-size-4 {
+  font-size: 1rem !important;
+  }
+
+  .title.is-3 {
+  font-size: 1.2rem !important;
+  }
+
+  .label {
+  font-size: 1rem;
+  }
+
+  .section {
+    padding: 2rem 1.5rem;
+  }
+  hr {
+  margin: 1rem 0;
+  }
+
 }

@@ -9,8 +9,8 @@ const Home = () => {
           <h1 className="title display is-1">Progress Pro</h1>
           <div className="subtitle display is-4">Gym Programme Creator and Results Tracker</div>
           <div className="buttons is-left">
-            <Link to="/register" className="button is-white is-large is-outlined level-item save-weight-buttons">Register</Link>
-            <Link to="/login" className="button is-white is-large is-outlined level-item save-weight-buttons">Login</Link>
+            <Link to="/register" className="button is-white is-large is-outlined level-item home-buttons">Register</Link>
+            <Link to="/login" className="button is-white is-large is-outlined level-item home-buttons">Login</Link>
           </div>
         </div>
       </div>

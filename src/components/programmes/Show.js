@@ -22,6 +22,7 @@ class Show extends React.Component {
   }
 
 
+
   componentDidMount() {
     Promise.props({
       exercises: axios.get('/api/exercises') .then(res => res.data),
@@ -73,7 +74,7 @@ class Show extends React.Component {
       <section className="section">
         <div className="container">
           <div className="columns is-centered">
-            <div className="column is-half-desktop is-two-thirds-tablet">
+            <div className="column is-two-thirds-desktop is-two-thirds-tablet">
               <div className="title is-size-3">{this.state.programme.name}</div>
               {/* form start •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• */}
               <form onSubmit={this.handleSubmit}>

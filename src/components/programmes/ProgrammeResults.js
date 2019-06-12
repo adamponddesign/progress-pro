@@ -30,7 +30,7 @@ class ProgrammeResults extends React.Component {
       <section className="section">
         <div className="container">
           <div className="columns is-centered">
-            <div className="column is-half-desktop is-two-thirds-tablet">
+            <div className="column is-two-thirds-desktop is-two-thirds-tablet">
               <div className="title is-3">{this.state.data.name} Results</div>
 
               {this.state.data.exercise_items.map(item =>
@@ -38,7 +38,7 @@ class ProgrammeResults extends React.Component {
                   <div className="subtitle is-size-4 table-title">{item.exercise.name}</div>
 
                   {/*  chart start •••••••••••••••••••••••••••••••••••••••*/}
-                  <div style={{ width: '100%', height: '350px' }}>
+                  <div style={{ width: '100%', height: '325px' }}>
                     <Chart
                       series={{ type: 'area' }}
                       primaryCursor

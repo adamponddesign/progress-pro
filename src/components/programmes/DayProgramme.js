@@ -28,7 +28,7 @@ class DayProgramme extends React.Component {
       <section className="section">
         <div className="container">
           <div className="columns is-centered">
-            <div className="column is-half-desktop is-two-thirds-tablet">
+            <div className="column is-two-thirds-desktop is-two-thirds-tablet">
               <div className="title is-3">{this.state.data[0].day}</div>
               {this.state.data.map(item =>
                 <div key={item.id}>

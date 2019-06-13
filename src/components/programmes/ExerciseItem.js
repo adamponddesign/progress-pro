@@ -81,8 +81,8 @@ class ExerciseItem extends React.Component {
 
   render() {
     return (
-      <div id="weight-up-down section" >
-        <div className="is-size-4 has-text-weight-bold container">{this.props.item.exercise.name}</div>
+      <div id="weight-up-down" >
+        <div className="is-size-4 has-text-weight-bold">{this.props.item.exercise.name}</div>
         <div className="has-text-white">{'Last session you lifted '}
           <span className="is-size-4 has-text-white">{this.getLastWeight().value}</span> kg
         </div>

@@ -65,7 +65,7 @@ I also made sure I had a good understanding of the database relationships.
 ![DB relationships](https://user-images.githubusercontent.com/47188720/60121023-15429480-977a-11e9-9adf-bb3d6719b15e.png)
 
 
-Although I ultimately knew wanted to display my data using graphs, I set myself the goal of viewing the data in a text list format first.
+Although I ultimately knew wanted to display my results data using graphs, I set myself the goal of viewing the data in a text list format first.
 
 
 ### Wins

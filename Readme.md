@@ -22,7 +22,7 @@
 
 ### Project brief
 * Build a full-stack application, making your own back-end and front-end.  
-* Use a Python Flask API to serve your data from a Postgres database.  
+* Use a Python Flask API to serve your data from a PostgreSQL database.  
 * Consume your API with a separate front-end built with React.
 * Be a complete product with multiple database relationships and CRUD functionality for at least a couple of models.
 

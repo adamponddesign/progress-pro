@@ -69,7 +69,7 @@ Although I ultimately knew wanted to display my results data using graphs, I set
 
 
 ### Wins
-My knowledge of array methods (particularly **.map**) improved during this project and I was pleased with the way I was able to manipulate my data into the correct format required by the React-chart plugin.
+My knowledge of array methods (particularly **.map**) improved during this project and I was pleased with the way I was able to manipulate my data into the correct format required by the React-charts plugin.
 
 ![Code Snippet 1](https://user-images.githubusercontent.com/47188720/60122298-ccd8a600-977c-11e9-9754-151441a9db59.png)
 

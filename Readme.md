@@ -73,7 +73,7 @@ My knowledge of array methods (particularly **.map**) improved during this proje
 
 ![Code Snippet 1](https://user-images.githubusercontent.com/47188720/60122298-ccd8a600-977c-11e9-9754-151441a9db59.png)
 
-I was also pleased with functionality I managed to achieve on the 'train page'.
+I was also pleased with the functionality I managed to achieve on the 'train page'.
 If a user has already entered a weight on the current day then the plus, minus, and submit buttons become disabled.
 
 ![Code Snippet 2](https://user-images.githubusercontent.com/47188720/60122370-f4c80980-977c-11e9-9a43-3382beaa96df.png)

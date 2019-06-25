@@ -1,74 +1,99 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project #4: A Flack + React App
+# Progress Pro (Full-Stack Web App)
+## ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) General Assembly Project 3
 
-## Overview
 
-**You’ve come a long way, and it's time to show it.** This will be your most advanced project to date. It is __IMPORTANT__ to note that when we say _advanced_, the project doesn't necessarily need to have lots more functionality.
+### Timeframe
+7 days
 
-**Remember:** simple code is stable code, so always favour refactoring and bug fixing over adding more functionality.
+### Technologies, frameworks and packages
+* JavaScript (ES6)
+* Python
+* React
+* Webpack
+* PostgreSQL
+* Flask
+* React-charts
+* Ajax
+* HTML5
+* Bulma
+* SCSS
+* GitHub
+* Insomnia
 
-With this in mind, you need to be smart about how you plan, limit your project scope to be achievable (in terms of functionality) and focus on quality rather than quantity.
+### Project brief
+* Build a full-stack application, making your own back-end and front-end.  
+* Use a Python Flask API to serve your data from a Postgres database.  
+* Consume your API with a separate front-end built with React.
+* Be a complete product with multiple database relationships and CRUD functionality for at least a couple of models.
 
-**Solo or Group?**
-You are free to work alone or in a group. Both ways have their pros and cons. Remember if you are working in a team that you are all on the same page and working towards the same goal.
+This was a solo project.  
+The application is deployed via Git on Heroku and can be found here: [Progress Pro](http://progress-pro.herokuapp.com/)
 
-Make sure you review your project proposal with your instructor so you can make sure it's **something you can accomplish in the limited time we have**. You will have some time after the project to add extra functionality before your Meet & Hire!
+### App overview
+Progress Pro is a gym training application.  
+Users can create an account then create personalised gym programmes containing chosen exercises on chosen days.
 
----
+![Programme Page](https://user-images.githubusercontent.com/47188720/60123146-a87dc900-977e-11e9-8342-68656aabad5e.png)
 
-## Technical Requirements
+Each programme is then stored on the user homepage, with specific buttons to train on a particular day.
 
-You must:
+![Programme Image](https://user-images.githubusercontent.com/47188720/60120286-65b8f280-9778-11e9-8f56-dbaf2f8145c4.png)
 
-* **Build a full-stack application** by making your own backend and your own front-end
-* **Use a Python Flask API** to serve your data from a Postgres database
-* **Consume your API with a separate front-end** built with React
-* **Be a complete product** which most likely means multiple relationships and CRUD functionality for at least a couple of models
-* **Implement thoughtful user stories/wireframes** that are significant enough to help you know which features are core MVP and which you can cut
-* **Have a visually impressive design** to kick your portfolio up a notch and have something to wow future clients & employers. **ALLOW** time for this.
-* **Be deployed online** so it's publicly accessible.
----
+The train page for each specific day contains the exercises and also the weight which was lifted in the last session for reference.  
+Users have the option to increase or decrease the weight before saving the session.
 
-## Necessary Deliverables
+![Train Page](https://user-images.githubusercontent.com/47188720/60120482-c9432000-9778-11e9-8fb7-986f8f6f2c5a.png)
 
-* A **working app** hosted on the internet
-* A **link to your hosted working app** in the URL section of your Github repo
-* A **git repository hosted on Github**, with a link to your hosted project, and frequent commits dating back to the _very beginning_ of the project
-* **A `readme.md` file** with:
-    * An embedded screenshot of the app
-    * Explanations of the **technologies** used
-    * A couple paragraphs about the **general approach you took**
-    * **Installation instructions** for any dependencies
-    * Link to your **user stories/wireframes** – sketches of major views / interfaces in your application
-    * Link to your **pitch deck/presentation** – documentation of your wireframes, user stories, and proposed architecture
-    * Descriptions of any **unsolved problems** or **major hurdles** you had to overcome
+On save the workout date and weights are added to the database.
 
----
+The results section of the app allows users to view their progress for each exercise in the programme over time.
 
-## Suggested Ways to Get Started
+![Results Page](https://user-images.githubusercontent.com/47188720/60120696-5b4b2880-9779-11e9-899a-5e77caeace1c.png)
 
-* **Don’t get too caught up in too many awesome features** – simple is always better. Build something impressive that does one thing well.
-* **Design first.** Planning with user stories & wireframes before writing code means you won't get distracted changing your mind – you'll know what to build, and you can spend your time wisely by just building it.
-* **Don’t hesitate to write throwaway code** to solve short term problems.
-* **Read the docs for whatever technologies / frameworks / API’s you use**.
-* **Write your code DRY** and **build your APIs RESTful**.
-* **Be consistent with your code style.** You're working in teams, but you're only making one app per team. Make sure it looks like a unified effort.
-* **Commit early, commit often.** Don’t be afraid to break something because you can always go back in time to a previous version.
-* **Keep user stories small and well-defined**, and remember – user stories focus on what a user needs, not what development tasks need accomplishing.
-* **Write code another developer wouldn't have to ask you about**. Do your naming conventions make sense? Would another developer be able to look at your app and understand what everything is?
-* **Make it all well-formatted.** Are you indenting, consistently? Can we find the start and end of every div, curly brace, etc?
-* **Comment your code.** Will someone understand what is going on in each block or function? Even if it's obvious, explaining the what & why means someone else can pick it up and get it.
-* **Write pseudocode before you write actual code.** Thinking through the logic of something helps.
 
----
 
-## Project Feedback + Evaluation
 
-* __Project Workflow__: Did you complete the user stories, wireframes, task tracking, and/or ERDs, as specified above? Did you use source control as expected for the phase of the program you’re in (detailed above)?
 
-* __Technical Requirements__: Did you deliver a project that met all the technical requirements? Given what the class has covered so far, did you build something that was reasonably complex?
+### Development process
 
-* __Creativity__: Did you added a personal spin or creative element into your project submission? Did you deliver something of value to the end user (not just a login button and an index page)?
+I wire-framed each page out before starting to code.
 
-* __Code Quality__: Did you follow code style guidance and best practices covered in class, such as spacing, modularity, and semantic naming? Did you comment your code as your instructors as we have in class?
+![Wireframe](https://user-images.githubusercontent.com/47188720/60120988-0360f180-977a-11e9-9db4-a54bfb6f6f1c.png)
 
-* __Problem Solving__: Are you able to defend why you implemented your solution in a certain way? Can you demonstrated that you thought through alternative implementations? _(Note that this part of your feedback evaluation will take place during your one-on-one code review with your instructors, after you've completed the project.)_
+I also made sure I had a good understanding of the database relationships.
+
+![DB relationships](https://user-images.githubusercontent.com/47188720/60121023-15429480-977a-11e9-9adf-bb3d6719b15e.png)
+
+
+Although I ultimately knew wanted to display my data using graphs, I set myself the goal of viewing the data in a text list format first.
+
+
+### Wins
+My knowledge of array methods (particularly **.map**) improved during this project and I was pleased with the way I was able to manipulate my data into the correct format required by the React-chart plugin.
+
+![Code Snippet 1](https://user-images.githubusercontent.com/47188720/60122298-ccd8a600-977c-11e9-9754-151441a9db59.png)
+
+I was also pleased with functionality I managed to achieve on the 'train page'.
+If a user has already entered a weight on the current day then the plus, minus, and submit buttons become disabled.
+
+![Code Snippet 2](https://user-images.githubusercontent.com/47188720/60122370-f4c80980-977c-11e9-9a43-3382beaa96df.png)
+
+![Code Snippet 3](https://user-images.githubusercontent.com/47188720/60122343-e4b02a00-977c-11e9-863e-569f7d7e9296.png)
+
+
+
+
+
+### Challenges
+I initially struggled to grasp SQL database relationships and how they affected my code.
+I also had some issues with getting the page to re-render when certain aspects had been changed.
+
+
+
+
+
+
+### Future enhancements
+* **Body Weight Tracking** - Users body weight entries with tracking   
+* **Images** - User body images to see physical results
+* **GIFs** - Short GIFs added to ‘train’ page to demonstrate good form when carrying out the exercise

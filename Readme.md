@@ -27,7 +27,7 @@
 * Be a complete product with multiple database relationships and CRUD functionality for at least a couple of models.
 
 This was a solo project.  
-The application is deployed via Git on Heroku and can be found here: [Progress Pro](http://progress-pro.herokuapp.com/)
+The application is deployed via Git on Heroku and can be found here: http://progress-pro.herokuapp.com
 
 ### App overview
 Progress Pro is a gym training application.  
